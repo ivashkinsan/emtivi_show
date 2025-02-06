@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-
+import "./logo.css";
 const Logo = () => {
     const canvasRef1 = useRef<HTMLCanvasElement>(null);
     const canvasRef2 = useRef<HTMLCanvasElement>(null);
@@ -10,7 +10,7 @@ const Logo = () => {
 
     const draw_1 = (context: CanvasRenderingContext2D, count: number) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.fillStyle = 'grey';
+        context.fillStyle = 'white';
         context.fillRect(0, 0, 164, 39);
         context.fillRect(0, 64, 164, 39);
         context.fillRect(0, 128, 164, 39);
@@ -18,7 +18,7 @@ const Logo = () => {
 
     const draw_2 = (context: CanvasRenderingContext2D, count: number) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.fillStyle = 'grey';
+        context.fillStyle = 'white';
         context.beginPath();
         context.moveTo(0, 0);
         context.lineTo(39, 0);
@@ -38,7 +38,7 @@ const Logo = () => {
 
     const draw_3 = (context: CanvasRenderingContext2D, count: number) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.fillStyle = 'grey';
+        context.fillStyle = 'white';
         context.beginPath();
         context.moveTo(0, 0);
         context.lineTo(164, 0);
@@ -54,7 +54,7 @@ const Logo = () => {
 
     const draw_4 = (context: CanvasRenderingContext2D, count: number) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.fillStyle = 'grey';
+        context.fillStyle = 'white';
         context.beginPath();
         context.moveTo(0, 0);
         context.lineTo(82, 164);
@@ -65,7 +65,7 @@ const Logo = () => {
 
     const draw_5 = (context: CanvasRenderingContext2D, count: number) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.fillStyle = 'grey';
+        context.fillStyle = 'white';
         context.beginPath();
         context.moveTo(0, 0);
         context.lineTo(42, 0);
@@ -80,7 +80,7 @@ const Logo = () => {
 
     const draw_6 = (context: CanvasRenderingContext2D, count: number) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.fillStyle = 'grey';
+        context.fillStyle = 'white';
         context.beginPath();
         context.beginPath();
         context.moveTo(82, 0);
@@ -145,12 +145,12 @@ const Logo = () => {
             justifyContent: 'center',
             alignItems: 'center',
         }}>
-            <canvas style={{margin: '0 15px'}} ref={canvasRef1} className="logoElem" width="164" height="164" />
-            <canvas style={{margin: '0 15px'}} ref={canvasRef2} className="logoElem" width="213" height="164" />
-            <canvas style={{margin: '0 15px'}} ref={canvasRef3} className="logoElem" width="164" height="164" />
-            <canvas style={{margin: '0 -35px 0 15px'}} ref={canvasRef4} className="logoElem" width="82" height="164" />
-            <canvas style={{margin: '0 0'}} ref={canvasRef5} className="logoElem" width="200" height="164" />
-            <canvas style={{margin: '0 15px 0 -35px'}} ref={canvasRef6} className="logoElem" width="82" height="164" />
+            <canvas style={{margin: '0 15px'}} className="canvas_ref_1" ref={canvasRef1} width="164" height="164" />
+            <canvas style={{margin: '0 15px'}} className="canvas_ref_2"ref={canvasRef2} width="213" height="164" />
+            <canvas style={{margin: '0 15px'}} className="canvas_ref_3"ref={canvasRef3}  width="164" height="164" />
+            <canvas style={{margin: '0 -35px 0 15px'}} className="canvas_ref_4" ref={canvasRef4}  width="82" height="164" />
+            <canvas style={{margin: '0 0'}} className="canvas_ref_5" ref={canvasRef5}  width="200" height="164" />
+            <canvas style={{margin: '0 15px 0 -35px'}} className="canvas_ref_6"ref={canvasRef6} width="82" height="164" />
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React from "react"; 
 import Logo from "../logo/logo.tsx";
-const HomeTV =() =>{
+const TV =() =>{
     return (
         <>        
         <div className="home_tv_border">
@@ -11,4 +11,4 @@ const HomeTV =() =>{
     )
 }
 
-export default HomeTV;
+export default TV;

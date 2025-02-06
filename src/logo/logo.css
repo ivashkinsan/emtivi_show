@@ -1,0 +1,17 @@
+.canvas_ref_1,
+.canvas_ref_2,
+.canvas_ref_3,
+.canvas_ref_4,
+.canvas_ref_5,
+.canvas_ref_6 {
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+}
+.canvas_ref_1:hover,
+.canvas_ref_2:hover,
+.canvas_ref_3:hover,
+.canvas_ref_4:hover,
+.canvas_ref_5:hover,
+.canvas_ref_6:hover {
+    transform: scale(1.1);
+}

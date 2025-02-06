@@ -1,11 +1,13 @@
 import React from "react";
-import './App.css';
+import "./App.css";
 import Home from './main_content/home.tsx';
-import "./main_content/home_tv.css";
+import "./main_content/tv.css";
+import Menu from './menu/Menu.tsx';
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Home /> 
+      <Menu />
     </div>
   );
 }

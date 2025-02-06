@@ -1,12 +1,17 @@
 import React from "react";
 import "./home.css"
 import Background from "./background.tsx";
-import HomeTV from "./home_TV.tsx";
+import TV from "./tv.tsx";
+import SoundWaveAnimation from "./SoundAnimation.tsx";
 // import Background from "../background_animate/background.tsx";
 const Home =() =>{
     return <section className="home">
-        <HomeTV />
         <Background />
+        <TV />
+        <SoundWaveAnimation heightWaves={100}/>
+        <SoundWaveAnimation heightWaves={500}/>
+        <SoundWaveAnimation heightWaves={100}/>
+
     </section>
 }
-export default Home
+export default Home;
