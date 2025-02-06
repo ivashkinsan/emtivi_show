@@ -7,17 +7,3 @@
     width: 100vw;
     background: radial-gradient(circle at center, #451785 , #110135);
 }
-
-.logo{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-
-    background-image: url('../logo/logo.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-
-    /* transform: translate(-50%, 0); */
-}
