@@ -8,9 +8,9 @@ const Home =() =>{
     return <section className="home">
         <Background />
         <TV />
-        <SoundWaveAnimation heightWaves={100}/>
-        <SoundWaveAnimation heightWaves={500}/>
-        <SoundWaveAnimation heightWaves={100}/>
+        {/* <SoundWaveAnimation heightWaves={100}/> */}
+        {/* <SoundWaveAnimation heightWaves={500}/> */}
+        {/* <SoundWaveAnimation heightWaves={100}/> */}
 
     </section>
 }

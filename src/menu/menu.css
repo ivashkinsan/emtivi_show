@@ -1,21 +1,52 @@
 .menu{
     position: absolute;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* grid-template-rows: repeat(2, 1fr); */
+    justify-content: center;
     align-items: center;
     bottom: 30px;
     left: 50%;
     right: 50%;
-    gap: 60px;
-    width: min-content;
+    gap: 20px;
+    /* width: 100%; */
+    height: 65px;
     transform: translate(-50%, 0);
    
     z-index: 1;
 }
 
-.menu > img{
-    width: 100px;
-    height: 100px;
+.menu_button {
+    position: relative;
+    width: 50px;
     cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease-in-out;
+}
+.menu_button:hover {
+transform: scale(1.1);
+}
+
+.menu_button_background{
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: 0;
+    bottom: 0;
+}
+
+
+.menu_button_back_hover{
+    background-image: url('./svg/SELECTOR.svg');
+    background-size: cover;
+    transition: all 0.3s ease-in-out;
+    animation: rotate 5s linear infinite;
+}
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }

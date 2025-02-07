@@ -140,11 +140,7 @@ const Logo = () => {
     }, []);
 
     return (
-        <div style={{
-            display: 'flex', 
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}>
+        <div className="logo_container">
             <canvas style={{margin: '0 15px'}} className="canvas_ref_1" ref={canvasRef1} width="164" height="164" />
             <canvas style={{margin: '0 15px'}} className="canvas_ref_2"ref={canvasRef2} width="213" height="164" />
             <canvas style={{margin: '0 15px'}} className="canvas_ref_3"ref={canvasRef3}  width="164" height="164" />

@@ -1,3 +1,10 @@
+.logo_container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    transform: scale(35%);
+}
+
 .canvas_ref_1,
 .canvas_ref_2,
 .canvas_ref_3,

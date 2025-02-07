@@ -13,7 +13,7 @@ const SoundWaveAnimation = ({ heightWaves }: { heightWaves: number }) => {
     const width = 1100;
     const height = heightWaves;
     const lineCount = 400;
-    const step = 60;
+    const step = 22;
     const amplitude = height / 2;
 
     let animationFrameId: number;
@@ -44,7 +44,9 @@ const SoundWaveAnimation = ({ heightWaves }: { heightWaves: number }) => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} width={1100} height={heightWaves} />;
+  return <canvas 
+  style={{ position: 'absolute'}} 
+  ref={canvasRef} width="400" height={heightWaves} />;
 };
 
 export default SoundWaveAnimation;
