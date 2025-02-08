@@ -1,12 +1,10 @@
 import React from "react";
 import "./home.css"
-import Background from "./background.tsx";
 import TV from "./tv.tsx";
 import SoundWaveAnimation from "./SoundAnimation.tsx";
 // import Background from "../background_animate/background.tsx";
 const Home =() =>{
     return <section className="home">
-        <Background />
         <TV />
         {/* <SoundWaveAnimation heightWaves={100}/> */}
         {/* <SoundWaveAnimation heightWaves={500}/> */}
