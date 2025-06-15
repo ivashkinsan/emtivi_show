@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
-import Home from './main_content/home.tsx';
+import Home from './main_content/home';
 import "./main_content/tv.css";
-import Menu from './menu/Menu.tsx';
+// import Menu from './menu/Menu.tsx';
+
 function App() {
   return (
     <div className="app">
