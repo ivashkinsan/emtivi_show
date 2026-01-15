@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import "./logo.css";
+import styles from "./Logo.module.css";
+
 const Logo = () => {
     const canvasRef1 = useRef<HTMLCanvasElement>(null);
     const canvasRef2 = useRef<HTMLCanvasElement>(null);
@@ -140,13 +141,13 @@ const Logo = () => {
     }, []);
 
     return (
-        <div className="logo_container">
-            <canvas style={{margin: '0 15px'}} className="canvas_ref_1" ref={canvasRef1} width="164" height="164" />
-            <canvas style={{margin: '0 15px'}} className="canvas_ref_2"ref={canvasRef2} width="213" height="164" />
-            <canvas style={{margin: '0 15px'}} className="canvas_ref_3"ref={canvasRef3}  width="164" height="164" />
-            <canvas style={{margin: '0 -35px 0 15px'}} className="canvas_ref_4" ref={canvasRef4}  width="82" height="164" />
-            <canvas style={{margin: '0 0'}} className="canvas_ref_5" ref={canvasRef5}  width="200" height="164" />
-            <canvas style={{margin: '0 15px 0 -35px'}} className="canvas_ref_6"ref={canvasRef6} width="82" height="164" />
+        <div className={styles.logo_container}>
+            <canvas style={{margin: '0 15px'}} className={styles.canvas_ref_1} ref={canvasRef1} width="164" height="164" />
+            <canvas style={{margin: '0 15px'}} className={styles.canvas_ref_2} ref={canvasRef2} width="213" height="164" />
+            <canvas style={{margin: '0 15px'}} className={styles.canvas_ref_3} ref={canvasRef3}  width="164" height="164" />
+            <canvas style={{margin: '0 -35px 0 15px'}} className={styles.canvas_ref_4} ref={canvasRef4}  width="82" height="164" />
+            <canvas style={{margin: '0 0'}} className={styles.canvas_ref_5} ref={canvasRef5}  width="200" height="164" />
+            <canvas style={{margin: '0 15px 0 -35px'}} className={styles.canvas_ref_6} ref={canvasRef6} width="82" height="164" />
         </div>
     );
 };

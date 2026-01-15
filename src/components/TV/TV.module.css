@@ -1,4 +1,4 @@
-.home_tv_border{
+.homeTvBorder{
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
     background: linear-gradient(217deg,rgba(204, 247, 249,0.2), rgba(14, 5, 69, 0.3));
 }
 
-.home_tv_border::before{
+.homeTvBorder::before{
     content: "";
     position: absolute;
     top: -4px;
@@ -21,7 +21,6 @@
     bottom: -4px;
     border-radius: 84px;
     box-shadow:  0 0 0px 4px rgba(249, 248, 204, 1),
-                 0 0 15px 18px rgba(227, 81, 68, 0.7);;
+                 0 0 15px 18px rgba(227, 81, 68, 0.7);
         
 }
-

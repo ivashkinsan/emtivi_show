@@ -1,7 +1,7 @@
 import React from "react";
-import "./menu.css";
+import styles from "./Menu.module.css";
 
-import { svgIcons } from "../menu/svg/IconsAll";
+import { svgIcons } from "./svg/IconsAll";
 
 const Menu = ({ page, handlerPage }) => {
     const allIcons = Object.entries(svgIcons).map(([name, IconComponent]) => {
@@ -17,7 +17,7 @@ const Menu = ({ page, handlerPage }) => {
     });
     
     return (
-        <div className="menu">{allIcons}</div>
+        <div className={styles.menu}>{allIcons}</div>
     );
 };
 
@@ -26,13 +26,13 @@ const MenuButton = ({ name, IconComponent, page, handlerPage }) => {
     
     return (
         <div 
-            className="menu_button"
+            className={styles.menuButton}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             onClick={() => handlerPage(name)}
         >   
             <IconComponent className="menu-icon" color={hover || page === name ? "white" : "#A0A0A0"} hover={hover || page === name}/>
-            <div className={`menu_button_background ${hover || page === name ? "menu_button_back_hover" : ""}`}></div>
+            <div className={`${styles.menuButtonBackground} ${hover || page === name ? styles.menuButtonBackHover : ""}`}></div>
         </div>
     );
 };

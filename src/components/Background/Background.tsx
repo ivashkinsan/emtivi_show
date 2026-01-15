@@ -1,9 +1,9 @@
 import React from "react";
-import "./background.css"
+import styles from "./Background.module.css"
 
 const Background = () =>{
     return (
-        <div className="background"></div>
+        <div className={styles.background}></div>
     )
 }
 

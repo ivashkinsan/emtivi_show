@@ -39,7 +39,7 @@ transform: scale(1.1);
 .menu_button_back_hover{
     width: auto;
     height: 59px;
-    background-image: url('./svg/SELECTOR.svg');
+    background-image: url('../svg/SELECTOR.svg');
     background-size: cover;
     transition: all 0.3s ease-in-out;
     animation: rotate 5s linear infinite;
