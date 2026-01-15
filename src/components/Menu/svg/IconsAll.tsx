@@ -110,7 +110,9 @@ const svgIcons = {
     "FOTO": FotoIcon,
     "LIST": ListIcon,
     "MUSIC": MusicIcon,
-    "PERSON": PersonIcon
+    "PERSONE": PersonIcon, // Renamed from PERSON
+    "PHONE": InfoIcon, // Placeholder
+    "VIDEO": FotoIcon, // Placeholder
 }
 
 export { svgIcons };

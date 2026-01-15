@@ -10,6 +10,7 @@
                 inset 0 0 10px 18px rgba(227, 81, 68, 0.7);
     border-radius: 80px;
     background: linear-gradient(217deg,rgba(204, 247, 249,0.2), rgba(14, 5, 69, 0.3));
+    overflow: hidden; /* Prevent content from spilling out */
 }
 
 .homeTvBorder::before{
@@ -23,4 +24,45 @@
     box-shadow:  0 0 0px 4px rgba(249, 248, 204, 1),
                  0 0 15px 18px rgba(227, 81, 68, 0.7);
         
+}
+
+.pageContentContainer {
+    position: relative; /* To contain absolute children if any */
+    width: 100%;
+    flex: 1; /* Allow it to take up remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5; /* Ensure content is above background but below menu */
+    overflow: hidden; /* Hide overflow within the content area */
+}
+
+.channelTransition {
+    animation: channelSwitchAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes channelSwitchAnimation {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.logoContainerWrapper {
+    display: flex;
+    flex-direction: column; /* Changed to column */
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensure it's above other elements */
+    margin-bottom: 20px; /* Add some spacing below the logo group */
+    transform: scale(0.5); /* Scale down the logo and label together */
 }

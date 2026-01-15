@@ -1,0 +1,7 @@
+.logoLabel {
+    margin-top: 10px; /* Spacing below the Logo */
+    color: white;
+    font-family: "Montserrat";
+    font-size: 15px;
+    user-select: none;
+}
