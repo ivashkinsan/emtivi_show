@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./Hero.module.css";
 import Button from "../../../components/atoms/Button/Button";
-import Logo from "../../../components/Logo/Logo";
+import LogoSVG from "../../../components/Logo/LogoSVG";
 import { Equalizer } from "./Equalizer";
 import { useScrollReveal } from "../../../hooks";
+
 export const Hero = () => {
   const { ref, isVisible } = useScrollReveal({
     threshold: 0.1,
@@ -17,7 +18,7 @@ export const Hero = () => {
       className={heroClassName}
     >
       <div className={styles.logo}>
-        <Logo />
+        <LogoSVG className={styles.logoSvg} />
       </div>
       <div className={styles.sloganContainer}>
         <Equalizer />

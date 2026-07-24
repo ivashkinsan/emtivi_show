@@ -21,12 +21,17 @@
 }
 
 .logo {
-    font-family: var(--font-headings);
-    font-size: var(--font-display-xxl);
-    font-weight: var(--font-weight-extrabold);
-    color: var(--text-primary);
-    letter-spacing: var(--letter-spacing-display-xl);
-    text-shadow: 0 0 20px rgba(var(--color-purple-500), 0.5);
+    width: 100%;
+    max-width: 600px;
+    padding: 0 var(--space-4);
+    display: flex;
+    justify-content: center;
+}
+
+.logoSvg {
+    width: 100%;
+    height: auto;
+    fill: white;
 }
 
 .sloganContainer {
@@ -54,14 +59,18 @@
     }
 
     .logo {
-        font-size: var(--font-display-xl);
-        letter-spacing: var(--letter-spacing-display-sm);
+        width: 100%;
+    }
+
+    .sloganContainer {
+        gap: var(--space-2); /* Уменьшен отступ для мобильных */
     }
 
     .slogan {
-        font-size: var(--font-body-md);
-        letter-spacing: 0.3em;
-        margin-top: var(--space-4);
-        margin-bottom: var(--space-6);
+        font-size: 0.8rem; /* Уменьшен шрифт */
+        letter-spacing: 0.05em; /* Уменьшен интервал */
+        white-space: nowrap; /* Принудительно в одну строку */
+        margin-top: var(--space-2);
+        margin-bottom: var(--space-4);
     }
 }

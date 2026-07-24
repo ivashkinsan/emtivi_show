@@ -10,6 +10,7 @@ const CHANNELS = [
   { id: 'CH04', label: 'Shows', IconComponent: svgIcons.LIST },
   { id: 'CH05', label: 'Media', IconComponent: svgIcons.FOTO },
   { id: 'CH06', label: 'Contact', IconComponent: svgIcons.PHONE },
+  { id: 'CH07', label: '3D Test', IconComponent: svgIcons.VIDEO },
 ];
 
 export const BottomNavigation: React.FC = () => {

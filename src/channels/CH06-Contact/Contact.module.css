@@ -35,6 +35,13 @@
     color: var(--gold-primary);
     text-decoration: none;
     text-shadow: var(--shadow-glow-gold);
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .phone {
+        font-size: 1.8rem; /* Уменьшаем размер шрифта на узких экранах */
+    }
 }
 
 .contactPerson {

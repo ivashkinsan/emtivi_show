@@ -1,29 +1,27 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styles from './GlassCard.module.css';
 
 type GlassCardVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'hero';
 type GlassCardGlow = 'purple' | 'gold' | 'blue' | 'red' | 'none';
 
-// Simplified polymorphic pattern
 type GlassCardProps = {
   variant?: GlassCardVariant;
   glow?: GlassCardGlow;
   children: React.ReactNode;
   className?: string;
-} & (
-    | (Omit<React.HTMLAttributes<HTMLDivElement>, 'className'> & { href?: undefined; as?: 'div' | 'article' })
-    | (Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'className'> & { href: string; as: 'a' })
-);
+  as?: 'div' | 'article' | 'a';
+  href?: string;
+} & React.HTMLAttributes<HTMLElement>;
 
-export const GlassCard: React.FC<GlassCardProps> = ({
+export const GlassCard = forwardRef<HTMLElement, GlassCardProps>(({
   variant = 'md',
   glow = 'none',
   children,
   className = '',
-  as: Component = 'div', // Default to 'div'
+  as: Component = 'div',
   href,
   ...props
-}) => {
+}, ref) => {
     const combinedClassName = [
         styles.card,
         styles[variant],
@@ -34,7 +32,7 @@ export const GlassCard: React.FC<GlassCardProps> = ({
 
     if (href) {
         return (
-            <a href={href} className={combinedClassName} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
+            <a ref={ref as React.Ref<HTMLAnchorElement>} href={href} className={combinedClassName} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
                 <div className={styles.reflection} />
                 <div className={styles.content}>{children}</div>
             </a>
@@ -42,9 +40,9 @@ export const GlassCard: React.FC<GlassCardProps> = ({
     }
 
     return (
-        <Component className={combinedClassName} {...(props as React.HTMLAttributes<HTMLElement>)}>
+        <Component ref={ref as any} className={combinedClassName} {...props}>
             <div className={styles.reflection} />
             <div className={styles.content}>{children}</div>
         </Component>
     );
-};
+});

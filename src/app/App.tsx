@@ -19,6 +19,7 @@ const BandChannel = lazyWithDelay(() => import('../channels/CH03-Band/index')) a
 const ShowsChannel = lazyWithDelay(() => import('../channels/CH04-Shows/index')) as FC;
 const MediaChannel = lazyWithDelay(() => import('../channels/CH05-Media/index')) as FC;
 const ContactChannel = lazyWithDelay(() => import('../channels/CH06-Contact/index')) as FC;
+const Test3DChannel = lazyWithDelay(() => import('../channels/CH07-Test3D/index')) as FC;
 
 const channelMap: Record<string, React.FC<{}>> = {
     'CH01': HomeChannel,
@@ -27,6 +28,7 @@ const channelMap: Record<string, React.FC<{}>> = {
     'CH04': ShowsChannel,
     'CH05': MediaChannel,
     'CH06': ContactChannel,
+    'CH07': Test3DChannel,
 };
 
 const channelColorMap: Record<string, 'purple' | 'gold' | 'blue' | 'red' | 'white'> = {

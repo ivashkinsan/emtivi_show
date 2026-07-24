@@ -38,8 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 24px;
+    width: 100px;
+    height: 20px;
 }
 
 .logoSvg {
@@ -70,15 +70,17 @@
 /* Mobile styles */
 @media (max-width: 1023px) {
     .header {
-        padding: var(--space-3);
+        padding: var(--space-2);
+        justify-content: space-between;
+        align-items: center;
     }
 
     .logoWrapper {
-        width: 90px;
-        height: 18px;
+        width: 80px;
+        height: 16px;
     }
     
     .channelId, .liveIndicator, .signal {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }

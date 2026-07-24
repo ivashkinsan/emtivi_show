@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./TV.module.css";
 import Background from "../Background/Background.tsx";
 import Logo from "../Logo/Logo.tsx";
-import Menu from '../Menu/Menu.tsx';
-import SoundWaveAnimation from "../SoundWaveAnimation/SoundWaveAnimation.tsx";
+import SoundWaveAnimation from '../SoundWaveAnimation/SoundWaveAnimation.tsx';
 import LogogLabel from "../Logo/LogoLabel.tsx";
 import Persons from "../Persons/Persons.tsx"; // Import Persons component
 
@@ -40,13 +39,8 @@ const PageContent = ({ page }: { page: string }) => {
     }
 };
 
-const TV =() =>{
-    const [page, setPage] = React.useState("HOME");
-
-    const handlerPage = (inputPage: string)=>{
-        if (page === inputPage) return; // Prevent re-render if already on the same page
-        setPage(inputPage);
-    }
+const TV = () => {
+    const [page] = React.useState("HOME");
 
     return (   
         <div className={styles.homeTvBorder}>
@@ -60,7 +54,6 @@ const TV =() =>{
             <div key={page} className={`${styles.pageContentContainer} ${styles.channelTransition}`}>
                 <PageContent page={page} />
             </div>
-            <Menu page={page} handlerPage={handlerPage}/>
         </div>
     )
 }
