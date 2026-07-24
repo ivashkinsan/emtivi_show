@@ -1,8 +1,8 @@
-import temnikovaImg from '../../img/Persons/Temnikova_2.jpg';
-import arutyunovImg from '../../img/Persons/Arutunov.jpg';
-import katrukImg from '../../img/Persons/Katruk_2_fray.jpeg';
-import ivashkinImg from '../../img/Persons/Ivashkin_2.jpg';
-import stulnevImg from '../../img/Persons/Stulnev.jpg';
+import temnikovaImg from '../../img/Persons/Temnikova_color.jpg';
+import arutyunovImg from '../../img/Persons/Arutunov_color.jpg';
+import katrukImg from '../../img/Persons/Katruk_color.jpg';
+import ivashkinImg from '../../img/Persons/Ivashkin_color.jpg';
+import stulnevImg from '../../img/Persons/Stulnev_color.jpg';
 
 export interface Musician {
     id: string;

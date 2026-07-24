@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './MusicianCard.module.css';
 import { GlassCard } from '../GlassCard';
-import Avatar from '../../atoms/Avatar/Avatar';
 import Button from '../../atoms/Button/Button';
 
 // --- Icons (temporary) ---
