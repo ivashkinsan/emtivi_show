@@ -4,6 +4,8 @@
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-top: 80px; /* Space for absolute header */
+    padding-bottom: 100px; /* Space for absolute nav */
 }
 
 .channelContent {

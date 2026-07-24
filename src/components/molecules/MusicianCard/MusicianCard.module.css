@@ -12,43 +12,23 @@
 
 .photoContainer {
     position: relative;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4; /* Увеличена высота для портретного формата */
     width: 100%;
     border-radius: var(--radius-md);
     overflow: hidden;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
 }
 
-.avatar {
-    position: absolute;
+.largePhoto {
     width: 100%;
     height: 100%;
-    border-radius: 0; /* Override avatar's full radius */
-    border: none;
-}
-
-.photoOverlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-6) var(--space-4) var(--space-4);
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    z-index: 2;
-}
-
-.instrument {
-    font-family: var(--font-accent);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-body-l);
-    color: var(--brand-primary);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    object-fit: cover;
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: var(--space-1);
 }
 
 .name {
@@ -58,6 +38,14 @@
     line-height: var(--line-height-heading-l);
     color: var(--text-primary);
     margin: 0;
+}
+
+.instrument {
+    font-family: var(--font-accent);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9rem;
+    color: var(--gold-primary); /* Используем золотой цвет */
+    margin-bottom: var(--space-2);
 }
 
 .description {

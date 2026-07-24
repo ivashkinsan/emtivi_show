@@ -45,14 +45,12 @@ export const MusicianCard: React.FC<MusicianCardProps> = React.memo(({
     <GlassCard as="article" glow="purple" variant="md" className={`${styles.card} ${className}`}>
       
       <div className={styles.photoContainer}>
-        <Avatar src={photo} fallback={name} size="xl" className={styles.avatar} />
-        <div className={styles.photoOverlay}>
-          <span className={styles.instrument}>{instrument}</span>
-        </div>
+        <img src={photo} alt={name} className={styles.largePhoto} />
       </div>
 
       <div className={styles.content}>
         <h3 className={styles.name}>{name}</h3>
+        <span className={styles.instrument}>{instrument}</span>
         <p className={styles.description}>{description}</p>
         
         {socials && (socials.instagram || socials.vk) && (
