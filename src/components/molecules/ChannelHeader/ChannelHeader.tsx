@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ChannelHeader.module.css';
 import LogoSVG from '../../Logo/LogoSVG';
+import { SignalIndicator } from '../../atoms/SignalIndicator/SignalIndicator';
 
 interface ChannelHeaderProps {
   channelId: string;
@@ -35,7 +36,7 @@ export const ChannelHeader: React.FC<ChannelHeaderProps> = ({ channelId }) => {
             </div>
             <div className={styles.right}>
                 <span className={styles.time}>{currentTime}</span>
-                <span className={styles.signal}>SIGNAL 98%</span>
+                <SignalIndicator />
             </div>
         </header>
     );

@@ -6,13 +6,19 @@ import { useChannelTransition } from '../hooks/useChannelTransition';
 import Loader from '../components/atoms/Loader/Loader';
 import { Providers } from './providers/index';
 
+// Helper for lazy loading with minimum delay
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+const lazyWithDelay = (importFn: () => Promise<any>, ms: number = 2000) => {
+    return lazy(() => Promise.all([importFn(), delay(ms)]).then(([module]) => module));
+}
+
 // Lazy load all channel components
-const HomeChannel = lazy(() => import('../channels/CH01-Home/index')) as FC;
-const AboutChannel = lazy(() => import('../channels/CH02-About/index')) as FC;
-const BandChannel = lazy(() => import('../channels/CH03-Band/index')) as FC;
-const ShowsChannel = lazy(() => import('../channels/CH04-Shows/index')) as FC;
-const MediaChannel = lazy(() => import('../channels/CH05-Media/index')) as FC;
-const ContactChannel = lazy(() => import('../channels/CH06-Contact/index')) as FC;
+const HomeChannel = lazyWithDelay(() => import('../channels/CH01-Home/index')) as FC;
+const AboutChannel = lazyWithDelay(() => import('../channels/CH02-About/index')) as FC;
+const BandChannel = lazyWithDelay(() => import('../channels/CH03-Band/index')) as FC;
+const ShowsChannel = lazyWithDelay(() => import('../channels/CH04-Shows/index')) as FC;
+const MediaChannel = lazyWithDelay(() => import('../channels/CH05-Media/index')) as FC;
+const ContactChannel = lazyWithDelay(() => import('../channels/CH06-Contact/index')) as FC;
 
 const channelMap: Record<string, React.FC<{}>> = {
     'CH01': HomeChannel,
@@ -50,7 +56,11 @@ const AppContent: React.FC = () => {
             <ChannelHeader channelId={channelToRender.substring(0, 5)} />
             
             <div className={styles.channelContainer}>
-                <Suspense fallback={<Loader variant="bars" size="lg" />}>
+                <Suspense fallback={
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                        <Loader variant="bars" size="lg" />
+                    </div>
+                }>
                     <div className={`${styles.channelContent} ${shouldRender ? styles.visible : ''}`}>
                         <ChannelComponent channelId={channelToRender} />
                     </div>

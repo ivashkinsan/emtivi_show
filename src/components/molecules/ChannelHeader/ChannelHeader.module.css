@@ -35,8 +35,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px; /* Фиксированная ширина для контейнера */
-    height: 20px;
+    width: 120px; /* Увеличено с 100px */
+    height: 24px; /* Увеличено с 20px */
 }
 
 .logoSvg {
@@ -48,16 +48,18 @@
 .channelId {
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
+    font-size: 1.1rem; /* Увеличено */
 }
 
 .liveIndicator {
     color: var(--text-live);
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--letter-spacing-label);
+    font-size: 1.1rem; /* Увеличено */
 }
 
 .time, .signal {
-    font-size: var(--font-caption);
+    font-size: 1rem; /* Увеличено */
     letter-spacing: var(--letter-spacing-caption);
     color: var(--text-muted);
 }
@@ -65,30 +67,15 @@
 /* Mobile styles */
 @media (max-width: 1023px) {
     .header {
-        padding: var(--space-2);
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .center {
-        flex-basis: auto;
-        order: 0;
+        padding: var(--space-3); /* Увеличено */
     }
 
     .logoWrapper {
-        width: 80px; /* Еще компактнее на мобильных */
-        height: 16px;
+        width: 90px; /* Увеличено */
+        height: 18px; /* Увеличено */
     }
     
-    .left, .right {
-        gap: var(--space-2);
-    }
-
-    .time {
-        display: none; /* Hide time on mobile */
-    }
-
     .channelId, .liveIndicator, .signal {
-        font-size: var(--font-caption); /* Smaller font for all elements */
+        font-size: 0.9rem; /* Увеличено */
     }
 }

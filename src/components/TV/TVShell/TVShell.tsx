@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./TVShell.module.css";
-import { AmbientBackground } from "./AmbientBackground";
-import { NoiseLayer } from "./NoiseLayer";
-import { VideoBackground } from "./VideoBackground";
+import { AmbientBackground } from './AmbientBackground';
+import { NoiseLayer } from './NoiseLayer';
+import { ImageBackground } from './ImageBackground';
 
 export interface TVShellProps {
   children: React.ReactNode;
@@ -26,7 +26,7 @@ export const TVShell: React.FC<TVShellProps> = ({
       <div className={styles.frame}>
         <div className={styles.bezel}>
           <div className={styles.screen}>
-            <VideoBackground isActive={channelId === 'CH01'} />
+            <ImageBackground isActive={channelId === 'CH01'} />
             {children}
           </div>
         </div>

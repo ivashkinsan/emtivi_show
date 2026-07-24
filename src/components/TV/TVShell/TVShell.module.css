@@ -4,7 +4,7 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: transparent; /* Make shell transparent for glow */
+    background-color: var(--color-bg-primary); /* Move solid background here */
     overflow: hidden;
     padding: 0; /* No padding on mobile */
     box-sizing: border-box;
@@ -16,14 +16,14 @@
     width: 100%;
     height: 100%;
     transition: all var(--duration-normal) var(--ease-out);
-    background-color: var(--color-bg-primary); /* Move background here */
+    background-color: transparent; /* Changed */
 }
 
 /* Bezel - the TV's physical body */
 .bezel {
     width: 100%;
     height: 100%;
-    background: var(--color-bg-secondary);
+    background: transparent; /* Changed */
     transition: all var(--duration-normal) var(--ease-out);
     position: relative; /* Create stacking context for inset shadow */
 }

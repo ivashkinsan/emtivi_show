@@ -1,0 +1,11 @@
+.signalContainer {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 12px;
+}
+
+.bar {
+    width: 3px;
+    background-color: var(--text-muted);
+}
