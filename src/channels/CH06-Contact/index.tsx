@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Contact.module.css';
-import { ChannelHeader } from '../../components/molecules/ChannelHeader';
 import { ContactForm } from './components/ContactForm';
 import { SocialLinks } from './components/SocialLinks';
 import Button from '../../components/atoms/Button/Button';
@@ -19,7 +18,6 @@ const AnimatedContactSection = ({ children }: { children: React.ReactNode }) => 
 export const ContactChannel: React.FC = () => {
     return (
         <div className={styles.container}>
-            <ChannelHeader>CH 06 | CONTACT | LIVE</ChannelHeader>
 
             <AnimatedContactSection>
                 <div className={styles.mainContact}>

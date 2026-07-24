@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './BottomNavigation.module.css';
 import { useChannelStore } from '../../../store';
+import { svgIcons } from '../../Menu/svg/IconsAll';
 
 const CHANNELS = [
-  { id: 'CH01', label: 'Home', icon: '🏠' },
-  { id: 'CH02', label: 'About', icon: '📖' },
-  { id: 'CH03', label: 'Band', icon: '🎸' },
-  { id: 'CH04', label: 'Shows', icon: '🎤' },
-  { id: 'CH05', label: 'Media', icon: '📸' },
-  // { id: 'CH06', label: 'Contact', icon: '✉️' }, // Specs say 5 tabs
+  { id: 'CH01', label: 'Home', IconComponent: svgIcons.HOME },
+  { id: 'CH02', label: 'About', IconComponent: svgIcons.INFO },
+  { id: 'CH03', label: 'Band', IconComponent: svgIcons.PERSONE },
+  { id: 'CH04', label: 'Shows', IconComponent: svgIcons.LIST },
+  { id: 'CH05', label: 'Media', IconComponent: svgIcons.FOTO },
+  { id: 'CH06', label: 'Contact', IconComponent: svgIcons.PHONE },
 ];
 
 export const BottomNavigation: React.FC = () => {
@@ -31,7 +32,9 @@ export const BottomNavigation: React.FC = () => {
             disabled={isSwitching}
             aria-current={isActive ? 'page' : undefined}
           >
-            <span className={styles.icon}>{channel.icon}</span>
+            <span className={styles.icon}>
+              <channel.IconComponent color="currentColor" />
+            </span>
             <span className={styles.label}>{channel.label}</span>
           </button>
         );

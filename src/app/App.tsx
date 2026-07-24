@@ -37,12 +37,18 @@ const ChannelComponent: React.FC<{ channelId: string }> = ({ channelId }) => {
     return <Component />;
 };
 
+import { ChannelHeader } from '../components/molecules/ChannelHeader';
+
+
 const AppContent: React.FC = () => {
     const { channelToRender, shouldRender } = useChannelTransition();
     const ambientColor = useMemo(() => channelColorMap[channelToRender] || 'purple', [channelToRender]);
 
     return (
         <TVShell ambientColor={ambientColor}>
+            {/* Header and Nav are outside the animated/scrolling container */}
+            <ChannelHeader channelId={channelToRender.substring(0, 5)} />
+            
             <div className={styles.channelContainer}>
                 <Suspense fallback={<Loader variant="bars" size="lg" />}>
                     <div className={`${styles.channelContent} ${shouldRender ? styles.visible : ''}`}>
@@ -50,6 +56,7 @@ const AppContent: React.FC = () => {
                     </div>
                 </Suspense>
             </div>
+
             <BottomNavigation />
         </TVShell>
     );

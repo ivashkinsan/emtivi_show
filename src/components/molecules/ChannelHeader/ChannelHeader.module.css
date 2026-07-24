@@ -1,9 +1,92 @@
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
     font-family: var(--font-accent);
-    font-size: var(--font-caption);
-    letter-spacing: var(--letter-spacing-label);
-    color: var(--text-muted);
     text-transform: uppercase;
-    padding: var(--space-4);
-    text-align: center;
+    color: var(--text-secondary);
+    
+    position: relative;
+    z-index: 20;
+
+    background-color: rgba(16, 15, 28, 0.2); /* Increased transparency */
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-secondary);
+}
+
+.left, .right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex: 1;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+.center {
+    flex: 0 1 auto;
+}
+
+.logoWrapper {
+    transform: scale(0.15);
+    width: 150px; /* Approximate width after scaling to maintain layout */
+    height: 30px; /* Approximate height after scaling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.channelId {
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+}
+
+.liveIndicator {
+    color: var(--text-live);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-label);
+}
+
+.time, .signal {
+    font-size: var(--font-caption);
+    letter-spacing: var(--letter-spacing-caption);
+    color: var(--text-muted);
+}
+
+/* Mobile styles */
+@media (max-width: 1023px) {
+    .header {
+        padding: var(--space-2);
+        /* Revert to single row */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .center {
+        /* Revert to single row */
+        flex-basis: auto;
+        order: 0;
+    }
+
+    .logoWrapper {
+        transform: scale(0.1); /* Minimize logo */
+        height: 20px;
+    }
+    
+    .left, .right {
+        gap: var(--space-2); /* Reduced gap */
+        /* flex: 1; is fine here */
+    }
+
+    .time {
+        display: none; /* Hide time on mobile */
+    }
+
+    .channelId, .liveIndicator, .signal {
+        font-size: var(--font-caption); /* Smaller font for all elements */
+    }
 }

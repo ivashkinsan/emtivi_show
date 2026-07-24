@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Shows.module.css';
-import { ChannelHeader } from '../../components/molecules/ChannelHeader';
 import { ServiceCard } from './components/ServiceCard';
 import type { ServiceCardProps } from './components/ServiceCard';
 import { useScrollReveal } from '../../hooks';
@@ -42,7 +41,6 @@ const AnimatedServiceCard = ({ service, index }: { service: ServiceCardProps, in
 export const ShowsChannel: React.FC = () => {
     return (
         <div className={styles.container}>
-            <ChannelHeader>CH 04 | SHOWS | LIVE</ChannelHeader>
             <div className={styles.grid}>
                 {SERVICES.map((service, index) => (
                     <AnimatedServiceCard key={service.title} service={service} index={index} />

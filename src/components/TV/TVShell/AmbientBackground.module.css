@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--color-bg-primary);
+    background-color: transparent;
     z-index: var(--z-ambient-glow);
     overflow: hidden;
     

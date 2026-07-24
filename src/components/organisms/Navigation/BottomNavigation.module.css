@@ -1,12 +1,8 @@
 .nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
     display: flex;
     justify-content: space-around;
     height: 80px;
-    width: 100%;
     
     /* Glass XL Effect */
     -webkit-backdrop-filter: var(--glass-backdrop-blur-xl);
@@ -69,6 +65,22 @@
     background-color: var(--brand-primary);
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-glow-purple);
+}
+
+/* Mobile styles */
+@media (max-width: 1023px) {
+    .nav {
+        height: 60px; /* Reduced height for mobile */
+        height: calc(60px + env(safe-area-inset-bottom));
+    }
+
+    .button {
+        padding: var(--space-3) 0; /* Adjust padding for better vertical centering */
+    }
+
+    .label {
+        display: none; /* Hide labels on mobile */
+    }
 }
 
 /* Desktop Hover */

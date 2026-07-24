@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Home.module.css';
-import { ChannelHeader } from '../../components/molecules/ChannelHeader/index';
 import { Hero } from './components/Hero';
 import { GlassCard } from '../../components/molecules/GlassCard/index';
 import { useScrollReveal } from '../../hooks/index';
@@ -28,7 +27,6 @@ const BenefitCard = ({ title, description }: { title: string, description: strin
 export const HomeChannel = () => {
   return (
     <div className={styles.container}>
-      <ChannelHeader>CH 01 | HOME | LIVE</ChannelHeader>
       <Hero />
       <section className={styles.benefitsGrid}>
         {BENEFITS.map(benefit => (

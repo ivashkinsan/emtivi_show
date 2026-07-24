@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './About.module.css';
-import { ChannelHeader } from '../../components/molecules/ChannelHeader';
 import { GlassCard } from '../../components/molecules/GlassCard';
 import { Timeline } from './components/Timeline';
 import { Facts } from './components/Facts';
@@ -8,7 +7,6 @@ import { Facts } from './components/Facts';
 export const AboutChannel: React.FC = () => {
   return (
     <div className={styles.container}>
-      <ChannelHeader>CH 02 | ABOUT | LIVE</ChannelHeader>
       
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Наша история</h2>
