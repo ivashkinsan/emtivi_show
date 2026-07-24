@@ -7,10 +7,13 @@
     text-transform: uppercase;
     color: var(--text-secondary);
     
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 20;
 
-    background-color: rgba(16, 15, 28, 0.2); /* Semi-transparent */
+    background-color: transparent;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -35,8 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px; /* Увеличено с 100px */
-    height: 24px; /* Увеличено с 20px */
+    width: 120px;
+    height: 24px;
 }
 
 .logoSvg {
@@ -48,18 +51,18 @@
 .channelId {
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
-    font-size: 1.1rem; /* Увеличено */
+    font-size: 1.1rem;
 }
 
 .liveIndicator {
     color: var(--text-live);
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--letter-spacing-label);
-    font-size: 1.1rem; /* Увеличено */
+    font-size: 1.1rem;
 }
 
 .time, .signal {
-    font-size: 1rem; /* Увеличено */
+    font-size: 1rem;
     letter-spacing: var(--letter-spacing-caption);
     color: var(--text-muted);
 }
@@ -67,15 +70,15 @@
 /* Mobile styles */
 @media (max-width: 1023px) {
     .header {
-        padding: var(--space-3); /* Увеличено */
+        padding: var(--space-3);
     }
 
     .logoWrapper {
-        width: 90px; /* Увеличено */
-        height: 18px; /* Увеличено */
+        width: 90px;
+        height: 18px;
     }
     
     .channelId, .liveIndicator, .signal {
-        font-size: 0.9rem; /* Увеличено */
+        font-size: 0.9rem;
     }
 }

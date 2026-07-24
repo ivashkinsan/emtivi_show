@@ -1,17 +1,20 @@
 .nav {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-around;
     height: 80px;
-
+    
     /* Glass Effect */
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(12, 16, 24, 0.5); /* Semi-transparent */
-
+    background-color: rgba(12, 16, 24, 0.5);
+    
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     z-index: var(--z-navigation);
-
+    
     /* Safe Area */
     padding-bottom: env(safe-area-inset-bottom);
     height: calc(80px + env(safe-area-inset-bottom));
