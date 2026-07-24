@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Hero.module.css";
 import Button from "../../../components/atoms/Button/Button";
 import Logo from "../../../components/Logo/Logo";
-import { YearsCounter } from "./YearsCounter";
 import { Equalizer } from "./Equalizer";
 import { useScrollReveal } from "../../../hooks";
 export const Hero = () => {

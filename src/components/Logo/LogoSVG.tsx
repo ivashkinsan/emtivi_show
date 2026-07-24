@@ -1,4 +1,4 @@
-import React from 'react';
+// No react import needed for simple SVG
 
 const LogoSVG = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 1000 164" fill="white" xmlns="http://www.w3.org/2000/svg">
