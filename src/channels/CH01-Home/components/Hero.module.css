@@ -29,21 +29,20 @@
     text-shadow: 0 0 20px rgba(var(--color-purple-500), 0.5);
 }
 
-.subheading {
+.sloganContainer {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-4);
-    margin-top: var(--space-2);
-    color: var(--gold-primary);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-8);
 }
 
 .slogan {
     font-family: var(--font-primary);
     font-size: var(--font-body-xl);
     color: var(--text-secondary);
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-8);
-    /* max-width: 400px; */
+    margin: 0;
     letter-spacing: 0.7em;
 }
 

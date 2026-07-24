@@ -20,9 +20,9 @@ export const Hero = () => {
       <div className={styles.logo}>
         <Logo />
       </div>
-      <p className={styles.slogan}>музыка | культура | технологии</p>
-      <div className={styles.subheading}>
-        <YearsCounter />
+      <div className={styles.sloganContainer}>
+        <Equalizer />
+        <p className={styles.slogan}>музыка | культура | технологии</p>
         <Equalizer />
       </div>
 

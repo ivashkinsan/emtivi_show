@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
 .canvas_ref_1,
 .canvas_ref_2,
 .canvas_ref_3,
@@ -12,7 +17,16 @@
 .canvas_ref_6 {
     z-index: 1;
     transition: all 0.3s ease-in-out;
+    animation: float 4s ease-in-out infinite;
 }
+
+.canvas_ref_1 { animation-delay: 0s; }
+.canvas_ref_2 { animation-delay: 0.2s; }
+.canvas_ref_3 { animation-delay: 0.4s; }
+.canvas_ref_4 { animation-delay: 0.6s; }
+.canvas_ref_5 { animation-delay: 0.8s; }
+.canvas_ref_6 { animation-delay: 1.0s; }
+
 .canvas_ref_1:hover,
 .canvas_ref_2:hover,
 .canvas_ref_3:hover,
