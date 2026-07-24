@@ -3,15 +3,15 @@
     display: flex;
     justify-content: space-around;
     height: 80px;
-    
-    /* Glass XL Effect */
-    -webkit-backdrop-filter: var(--glass-backdrop-blur-xl);
-    backdrop-filter: var(--glass-backdrop-blur-xl);
-    background-color: rgba(12, 16, 24, 0.75); /* Darker glass for nav */
-    
-    border-top: 1px solid var(--border-secondary);
+
+    /* Glass Effect */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(12, 16, 24, 0.5); /* Semi-transparent */
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     z-index: var(--z-navigation);
-    
+
     /* Safe Area */
     padding-bottom: env(safe-area-inset-bottom);
     height: calc(80px + env(safe-area-inset-bottom));

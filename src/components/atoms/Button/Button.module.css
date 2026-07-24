@@ -130,10 +130,15 @@
 .tv:hover:not(:disabled) { border-color: var(--gold-light); }
 
 .hero {
-    background-image: var(--gradient-primary);
-    color: var(--text-on-brand);
-    border: none;
-    box-shadow: var(--shadow-glow-purple);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.hero:hover:not(:disabled) { 
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .icon {
@@ -185,7 +190,7 @@
     height: 72px;
     padding: 0 var(--space-8);
     font-size: var(--font-heading-s);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-sm); /* Sharper corners */
 }
 .icon.xs { width: 32px; height: 32px; padding: 0;}
 .icon.sm { width: 40px; height: 40px; padding: 0;}

@@ -45,7 +45,7 @@ const AppContent: React.FC = () => {
     const ambientColor = useMemo(() => channelColorMap[channelToRender] || 'purple', [channelToRender]);
 
     return (
-        <TVShell ambientColor={ambientColor}>
+        <TVShell ambientColor={ambientColor} channelId={channelToRender}>
             {/* Header and Nav are outside the animated/scrolling container */}
             <ChannelHeader channelId={channelToRender.substring(0, 5)} />
             

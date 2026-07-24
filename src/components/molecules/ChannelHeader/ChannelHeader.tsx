@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ChannelHeader.module.css';
-import Logo from '../../Logo/Logo';
+import LogoSVG from '../../Logo/LogoSVG';
 
 interface ChannelHeaderProps {
   channelId: string;
@@ -30,7 +30,7 @@ export const ChannelHeader: React.FC<ChannelHeaderProps> = ({ channelId }) => {
             </div>
             <div className={styles.center}>
                 <div className={styles.logoWrapper}>
-                    <Logo />
+                    <LogoSVG className={styles.logoSvg} />
                 </div>
             </div>
             <div className={styles.right}>

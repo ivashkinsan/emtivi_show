@@ -5,9 +5,9 @@ import { GlassCard } from '../../components/molecules/GlassCard/index';
 import { useScrollReveal } from '../../hooks/index';
 
 const BENEFITS = [
-  { title: '🎵 Хиты на любой вкус', description: 'Наш репертуар знаком каждому и заставляет танцевать с первых нот.' },
-  { title: '🎸 Опыт с 2010 года', description: 'Мы — выходцы из легендарных кавер-групп Just Like Heaven и Strawberry Fields.' },
-  { title: '💫 Полный состав', description: 'Восемь профессиональных музыкантов, включая мощную медную секцию.' },
+  { title: 'Хиты на любой вкус', description: 'Наш репертуар знаком каждому и заставляет танцевать с первых нот.' },
+  { title: 'Опыт с 2010 года', description: 'Мы — выходцы из легендарных кавер-групп Just Like Heaven и Strawberry Fields.' },
+  { title: 'Полный состав', description: 'Восемь профессиональных музыкантов, включая мощную медную секцию.' },
 ];
 
 const BenefitCard = ({ title, description }: { title: string, description: string }) => {

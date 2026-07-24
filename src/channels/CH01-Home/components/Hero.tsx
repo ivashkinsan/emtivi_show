@@ -5,7 +5,6 @@ import Logo from "../../../components/Logo/Logo";
 import { YearsCounter } from "./YearsCounter";
 import { Equalizer } from "./Equalizer";
 import { useScrollReveal } from "../../../hooks";
-
 export const Hero = () => {
   const { ref, isVisible } = useScrollReveal({
     threshold: 0.1,
