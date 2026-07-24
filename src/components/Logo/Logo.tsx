@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import styles from "./Logo.module.css";
 
 const Logo = () => {
@@ -9,7 +9,7 @@ const Logo = () => {
     const canvasRef5 = useRef<HTMLCanvasElement>(null);
     const canvasRef6 = useRef<HTMLCanvasElement>(null);
 
-    const draw_1 = (context: CanvasRenderingContext2D, count: number) => {
+    const draw_1 = (context: CanvasRenderingContext2D) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.fillStyle = 'white';
         context.fillRect(0, 0, 164, 39);
@@ -17,7 +17,7 @@ const Logo = () => {
         context.fillRect(0, 128, 164, 39);
     };
 
-    const draw_2 = (context: CanvasRenderingContext2D, count: number) => {
+    const draw_2 = (context: CanvasRenderingContext2D) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.fillStyle = 'white';
         context.beginPath();
@@ -37,7 +37,7 @@ const Logo = () => {
         context.fill();
     };
 
-    const draw_3 = (context: CanvasRenderingContext2D, count: number) => {
+    const draw_3 = (context: CanvasRenderingContext2D) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.fillStyle = 'white';
         context.beginPath();
@@ -53,7 +53,7 @@ const Logo = () => {
         context.fill();
     };
 
-    const draw_4 = (context: CanvasRenderingContext2D, count: number) => {
+    const draw_4 = (context: CanvasRenderingContext2D) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.fillStyle = 'white';
         context.beginPath();
@@ -64,7 +64,7 @@ const Logo = () => {
         context.fill();
     };
 
-    const draw_5 = (context: CanvasRenderingContext2D, count: number) => {
+    const draw_5 = (context: CanvasRenderingContext2D) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.fillStyle = 'white';
         context.beginPath();
@@ -79,7 +79,7 @@ const Logo = () => {
         context.fill();
     };
 
-    const draw_6 = (context: CanvasRenderingContext2D, count: number) => {
+    const draw_6 = (context: CanvasRenderingContext2D) => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.fillStyle = 'white';
         context.beginPath();
@@ -102,40 +102,40 @@ const Logo = () => {
         if (canvas1) {
             const context1 = canvas1.getContext('2d');
             if (context1) {
-                draw_1(context1, 0);
+                draw_1(context1);
             }
         }
 
         if (canvas2) {
             const context2 = canvas2.getContext('2d');
             if (context2) {
-                draw_2(context2, 0);
+                draw_2(context2);
             }
         }
 
         if (canvas3) {
             const context3 = canvas3.getContext('2d');
             if (context3) {
-                draw_3(context3, 0);
+                draw_3(context3);
             }
         }
 
         if (canvas4) {
             const context4 = canvas4.getContext('2d');
             if (context4) {
-                draw_4(context4, 0);
+                draw_4(context4);
             }
         }
         if (canvas5) {
             const context5 = canvas5.getContext('2d');
             if (context5) {
-                draw_5(context5, 0);
+                draw_5(context5);
             }
         }
         if (canvas6) {
             const context6 = canvas6.getContext('2d');
             if (context6) {
-                draw_6(context6, 0);
+                draw_6(context6);
             }
         }
     }, []);

@@ -1,0 +1,54 @@
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    background-color: var(--brand-dark);
+    color: var(--text-on-brand);
+    font-weight: var(--font-weight-medium);
+    border: 2px solid var(--border-primary);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fallback {
+    text-align: center;
+    font-family: var(--font-primary);
+}
+
+/* Sizes */
+.xs {
+    width: 32px;
+    height: 32px;
+    font-size: var(--font-caption);
+}
+.sm {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-body-small);
+}
+.md {
+    width: 56px;
+    height: 56px;
+    font-size: var(--font-body);
+    border-width: 3px;
+}
+.lg {
+    width: 72px;
+    height: 72px;
+    font-size: var(--font-body-xl);
+    border-width: 3px;
+}
+.xl {
+    width: 96px;
+    height: 96px;
+    font-size: var(--font-heading-s);
+    border-width: 4px;
+}

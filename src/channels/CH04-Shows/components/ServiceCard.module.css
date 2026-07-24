@@ -1,0 +1,68 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.badge {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-2);
+}
+
+.title {
+    font-family: var(--font-headings);
+    font-size: var(--font-heading-m);
+    color: var(--text-primary);
+}
+
+.memberCount {
+    font-family: var(--font-accent);
+    color: var(--text-muted);
+}
+
+.description {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+}
+
+.included {
+    margin-bottom: var(--space-8);
+}
+
+.includedTitle {
+    font-family: var(--font-headings);
+    font-size: var(--font-body-l);
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+}
+
+.includedList {
+    list-style: '✅  ';
+    padding-left: var(--space-5);
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-family: var(--font-headings);
+    font-size: var(--font-heading-s);
+    color: var(--gold-primary);
+    font-weight: var(--font-weight-bold);
+}

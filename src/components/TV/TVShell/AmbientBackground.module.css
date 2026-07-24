@@ -1,0 +1,89 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-bg-primary);
+    z-index: var(--z-ambient-glow);
+    overflow: hidden;
+    
+    /* Default position */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    
+    /* Base color for the glow */
+    --ambient-color: rgba(var(--color-purple-500), 0.15);
+}
+
+.background::before {
+    content: '';
+    position: absolute;
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+    
+    width: 80vmax;
+    height: 80vmax;
+    
+    transform: translate(-50%, -50%);
+    
+    background: radial-gradient(
+        circle at center,
+        var(--ambient-color) 0%,
+        transparent 50%
+    );
+    
+    filter: blur(100px);
+    
+    animation: pulse 8s infinite ease-in-out;
+
+    transition: background var(--duration-very-slow) var(--ease-in-out);
+}
+
+/* Color Variants */
+.purple { --ambient-color: rgba(var(--color-purple-500), 0.15); }
+.gold { --ambient-color: rgba(var(--color-gold-500), 0.15); }
+.blue { --ambient-color: rgba(var(--color-blue-500), 0.15); }
+.red { --ambient-color: rgba(var(--color-red-500), 0.15); }
+.white { --ambient-color: rgba(255, 255, 255, 0.05); }
+
+
+/* Animations */
+@keyframes pulse {
+    0%   { opacity: 0.7; transform: translate(-50%, -50%) scale(0.9); }
+    50%  { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+    100% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.9); }
+}
+
+@keyframes roam {
+    0% {
+        top: 25%;
+        left: 25%;
+    }
+    25% {
+        top: 75%;
+        left: 40%;
+    }
+    50% {
+        top: 60%;
+        left: 80%;
+    }
+    75% {
+        top: 30%;
+        left: 70%;
+    }
+    100% {
+        top: 25%;
+        left: 25%;
+    }
+}
+
+
+/* On mobile/touch devices, disable mouse tracking and use automatic animation */
+@media (pointer: coarse) {
+    .background::before {
+        animation: 
+            pulse 8s infinite ease-in-out,
+            roam 20s infinite ease-in-out;
+    }
+}

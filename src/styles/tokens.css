@@ -1,0 +1,282 @@
+:root {
+  /* -------------------------------------------------------------------------- */
+  /*                                    Color                                   */
+  /* -------------------------------------------------------------------------- */
+
+  /* Base palette */
+  --color-purple-500: 139 92 246;
+  --color-purple-400: 167 139 250;
+  --color-purple-700: 109 40 217;
+  --color-gold-500: 255 213 74;
+  --color-gold-300: 255 229 138;
+  --color-gold-700: 244 180 0;
+  --color-blue-500: 59 130 246;
+  --color-red-500: 239 68 68;
+  --color-green-500: 34 197 94;
+
+  /* Background */
+  --color-bg-primary: #07080D;
+  --color-bg-secondary: #0C1018;
+  --color-bg-tertiary: #131826;
+  --color-bg-overlay: rgba(12, 16, 24, 0.8);
+
+  /* Brand */
+  --brand-primary: rgb(var(--color-purple-500)); /* #8B5CF6 */
+  --brand-light: rgb(var(--color-purple-400));   /* #A78BFA */
+  --brand-dark: rgb(var(--color-purple-700));    /* #6D28D9 */
+  
+  /* Gold */
+  --gold-primary: rgb(var(--color-gold-500)); /* #FFD54A */
+  --gold-light: rgb(var(--color-gold-300));  /* #FFE58A */
+  --gold-dark: rgb(var(--color-gold-700));   /* #F4B400 */
+
+  /* Text */
+  --text-primary: #F5F7FA;
+  --text-secondary: #B6C0CF;
+  --text-muted: #7E8899;
+  --text-accent: var(--brand-primary);
+  --text-on-brand: #FFFFFF;
+  --text-live: rgb(var(--color-red-500));
+  --text-success: rgb(var(--color-green-500));
+
+  /* Borders */
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.05);
+  --border-accent: var(--brand-primary);
+  --border-glow: rgba(var(--color-purple-500), 0.5);
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 Typography                                 */
+  /* -------------------------------------------------------------------------- */
+
+  /* Font Family */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-headings: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-accent: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Font Weight */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Font Size & Line Height */
+  --font-display-xxl: 5rem; /* 80px */
+  --line-height-display-xxl: 1.1;
+  --letter-spacing-display-xxl: -0.02em;
+
+  --font-display-xl: 4rem; /* 64px */
+  --line-height-display-xl: 1.1;
+  --letter-spacing-display-xl: -0.02em;
+
+  --font-display-l: 3rem; /* 48px */
+  --line-height-display-l: 1.2;
+  --letter-spacing-display-l: -0.02em;
+
+  --font-heading-xl: 2.5rem; /* 40px */
+  --line-height-heading-xl: 1.2;
+  --letter-spacing-heading-xl: -0.02em;
+  
+  --font-heading-l: 2rem; /* 32px */
+  --line-height-heading-l: 1.2;
+  --letter-spacing-heading-l: -0.015em;
+
+  --font-heading-m: 1.75rem; /* 28px */
+  --line-height-heading-m: 1.3;
+  --letter-spacing-heading-m: -0.015em;
+
+  --font-heading-s: 1.5rem; /* 24px */
+  --line-height-heading-s: 1.4;
+  --letter-spacing-heading-s: -0.01em;
+
+  --font-body-xl: 1.25rem; /* 20px */
+  --line-height-body-xl: 1.5;
+  --letter-spacing-body-xl: 0em;
+
+  --font-body-l: 1.125rem; /* 18px */
+  --line-height-body-l: 1.6;
+  --letter-spacing-body-l: 0em;
+  
+  --font-body: 1rem; /* 16px */
+  --line-height-body: 1.7;
+  --letter-spacing-body: 0em;
+
+  --font-body-small: 0.875rem; /* 14px */
+  --line-height-body-small: 1.6;
+  --letter-spacing-body-small: 0.01em;
+
+  --font-caption: 0.75rem; /* 12px */
+  --line-height-caption: 1.5;
+  --letter-spacing-caption: 0.02em;
+
+  --font-label: 0.75rem; /* 12px */
+  --line-height-label: 1.5;
+  --letter-spacing-label: 0.05em;
+
+  --font-badge-text: 0.625rem; /* 10px */
+  --line-height-badge-text: 1.4;
+  --letter-spacing-badge-text: 0.07em;
+
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   Spacing                                  */
+  /* -------------------------------------------------------------------------- */
+  --space-unit: 4px;
+  --space-0: 0;
+  --space-1: var(--space-unit); /* 4px */
+  --space-2: calc(var(--space-unit) * 2); /* 8px */
+  --space-3: calc(var(--space-unit) * 3); /* 12px */
+  --space-4: calc(var(--space-unit) * 4); /* 16px */
+  --space-5: calc(var(--space-unit) * 5); /* 20px */
+  --space-6: calc(var(--space-unit) * 6); /* 24px */
+  --space-7: calc(var(--space-unit) * 7); /* 28px */
+  --space-8: calc(var(--space-unit) * 8); /* 32px */
+  --space-9: calc(var(--space-unit) * 9); /* 36px */
+  --space-10: calc(var(--space-unit) * 10); /* 40px */
+  --space-11: calc(var(--space-unit) * 12); /* 48px */
+  --space-12: calc(var(--space-unit) * 14); /* 56px */
+  --space-13: calc(var(--space-unit) * 16); /* 64px */
+  --space-14: calc(var(--space-unit) * 20); /* 80px */
+  --space-15: calc(var(--space-unit) * 24); /* 96px */
+  --space-16: calc(var(--space-unit) * 30); /* 120px */
+  --space-17: calc(var(--space-unit) * 40); /* 160px */
+  --space-18: calc(var(--space-unit) * 48); /* 192px */
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   Radius                                   */
+  /* -------------------------------------------------------------------------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* -------------------------------------------------------------------------- */
+  /*                                Breakpoints                                 */
+  /* -------------------------------------------------------------------------- */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 480px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1280px;
+  --breakpoint-3xl: 1440px;
+  --breakpoint-4xl: 1920px;
+  
+  /* -------------------------------------------------------------------------- */
+  /*                                   Shadows                                  */
+  /* -------------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px -1px rgba(0,0,0,0.1), 0 1px 3px -1px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05);
+  --shadow-2xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+
+  /* Glows */
+  --shadow-glow-purple: 0 0 20px 0 rgba(var(--color-purple-500), 0.4);
+  --shadow-glow-gold: 0 0 20px 0 rgba(var(--color-gold-500), 0.4);
+  --shadow-glow-blue: 0 0 20px 0 rgba(var(--color-blue-500), 0.4);
+  --shadow-live: 0 0 15px 0 rgba(var(--color-red-500), 0.6);
+
+  /* -------------------------------------------------------------------------- */
+  /*                                    Glass                                   */
+  /* -------------------------------------------------------------------------- */
+  --glass-backdrop-blur-xs: blur(2px);
+  --glass-backdrop-blur-sm: blur(4px);
+  --glass-backdrop-blur-md: blur(8px);
+  --glass-backdrop-blur-lg: blur(12px);
+  --glass-backdrop-blur-xl: blur(16px);
+  
+  --glass-bg: rgba(30, 36, 50, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-shadow: var(--shadow-md);
+
+  /* Base styles for a glass component */
+  --glass-xs: {
+    -webkit-backdrop-filter: var(--glass-backdrop-blur-xs);
+    backdrop-filter: var(--glass-backdrop-blur-xs);
+    background-color: var(--glass-bg);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  };
+  --glass-sm: {
+    -webkit-backdrop-filter: var(--glass-backdrop-blur-sm);
+    backdrop-filter: var(--glass-backdrop-blur-sm);
+    background-color: var(--glass-bg);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  };
+  --glass-md: {
+    -webkit-backdrop-filter: var(--glass-backdrop-blur-md);
+    backdrop-filter: var(--glass-backdrop-blur-md);
+    background-color: var(--glass-bg);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  };
+  --glass-lg: {
+    -webkit-backdrop-filter: var(--glass-backdrop-blur-lg);
+    backdrop-filter: var(--glass-backdrop-blur-lg);
+    background-color: var(--glass-bg);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  };
+  --glass-xl: {
+    -webkit-backdrop-filter: var(--glass-backdrop-blur-xl);
+    backdrop-filter: var(--glass-backdrop-blur-xl);
+    background-color: var(--glass-bg);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  };
+
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   Z-Index                                  */
+  /* -------------------------------------------------------------------------- */
+  --z-background: -1;
+  --z-particles: 0;
+  --z-ambient-glow: 1;
+  --z-glass-panels: 10;
+  --z-cards: 11;
+  --z-buttons: 12;
+  --z-floating-controls: 20;
+  --z-navigation: 30;
+  --z-dialogs: 40;
+  --z-notifications: 50;
+  --z-cursor-effects: 999;
+  
+  /* -------------------------------------------------------------------------- */
+  /*                                  Gradients                                 */
+  /* -------------------------------------------------------------------------- */
+  --gradient-primary: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-dark) 100%);
+  --gradient-gold: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+  --gradient-glass: radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.1), transparent 50%);
+  --gradient-ambient: radial-gradient(ellipse at center, rgba(var(--color-purple-500), 0.15), transparent 70%);
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 Transitions                                */
+  /* -------------------------------------------------------------------------- */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-very-slow: 700ms;
+
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+  /* https://www.joshwcomeau.com/animation/a-friendly-introduction-to-spring-physics/ */
+  --spring-soft: cubic-bezier(.57,.21,.69,1.25);
+  --spring-medium: cubic-bezier(.57,.21,.69,1.5);
+  --spring-strong: cubic-bezier(.57,.21,.69,1.75);
+
+  --transition-colors: color, background-color, border-color var(--duration-normal) var(--ease-out);
+  --transition-transform: transform var(--duration-normal) var(--ease-out);
+  --transition-all: all var(--duration-normal) var(--ease-out);
+
+}

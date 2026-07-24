@@ -1,45 +1,58 @@
-.homeTvBorder{
+.homeTvBorder {
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    height: 90%;
-    box-shadow: inset 0 0 0px 4px rgba(249, 248, 204, 1),
-                inset 0 0 10px 18px rgba(227, 81, 68, 0.7);
-    border-radius: 80px;
-    background: linear-gradient(217deg,rgba(204, 247, 249,0.2), rgba(14, 5, 69, 0.3));
-    overflow: hidden; /* Prevent content from spilling out */
+    width: 90vw;
+    height: 90vh;
+    max-width: 1600px; /* Max width for large screens */
+    border-radius: var(--radius-2xl);
+    background: var(--color-bg-secondary);
+    box-shadow: inset 0 0 0 2px var(--gold-light),
+                inset 0 0 10px 12px rgba(var(--color-red-500), 0.5),
+                var(--shadow-2xl);
+    overflow: hidden;
+    z-index: var(--z-glass-panels);
 }
 
-.homeTvBorder::before{
+.homeTvBorder::before {
     content: "";
     position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border-radius: 84px;
-    box-shadow:  0 0 0px 4px rgba(249, 248, 204, 1),
-                 0 0 15px 18px rgba(227, 81, 68, 0.7);
-        
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: calc(var(--radius-2xl) + 2px); /* Maintain curvature */
+    box-shadow: var(--shadow-glow-gold), var(--shadow-live);
+    filter: blur(5px);
+    z-index: var(--z-ambient-glow);
 }
 
 .pageContentContainer {
-    position: relative; /* To contain absolute children if any */
+    position: relative;
     width: 100%;
-    flex: 1; /* Allow it to take up remaining space */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 5; /* Ensure content is above background but below menu */
-    overflow: hidden; /* Hide overflow within the content area */
+    z-index: var(--z-cards);
+    overflow: hidden;
+    padding: var(--space-8);
+}
+
+.pageContent {
+    font-family: var(--font-headings);
+    font-size: var(--font-heading-m);
+    line-height: var(--line-height-heading-m);
+    color: var(--text-primary);
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .channelTransition {
-    animation: channelSwitchAnimation 0.5s ease-in-out forwards;
+    animation: channelSwitchAnimation var(--duration-slow) var(--ease-in-out);
 }
 
 @keyframes channelSwitchAnimation {
@@ -47,9 +60,13 @@
         opacity: 1;
         transform: scale(1);
     }
+    49% {
+        opacity: 0;
+        transform: scale(0.98);
+    }
     50% {
         opacity: 0;
-        transform: scale(0.95);
+        transform: scale(1.02);
     }
     100% {
         opacity: 1;
@@ -59,10 +76,10 @@
 
 .logoContainerWrapper {
     display: flex;
-    flex-direction: column; /* Changed to column */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 10; /* Ensure it's above other elements */
-    margin-bottom: 20px; /* Add some spacing below the logo group */
-    transform: scale(0.5); /* Scale down the logo and label together */
+    z-index: var(--z-navigation);
+    margin-bottom: var(--space-5);
+    transform: scale(0.5); /* This seems to be a specific design choice */
 }

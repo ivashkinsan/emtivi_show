@@ -1,0 +1,29 @@
+/* Facts.module.css */
+.factsContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    gap: var(--space-4);
+}
+
+.factItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.factValue {
+    font-family: var(--font-headings);
+    font-size: var(--font-display-l);
+    font-weight: var(--font-weight-bold);
+    color: var(--gold-primary);
+    line-height: 1.1;
+}
+
+.factLabel {
+    font-family: var(--font-primary);
+    font-size: var(--font-body-small);
+    color: var(--text-muted);
+}

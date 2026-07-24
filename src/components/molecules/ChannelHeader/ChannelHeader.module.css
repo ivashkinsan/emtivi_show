@@ -1,0 +1,9 @@
+.header {
+    font-family: var(--font-accent);
+    font-size: var(--font-caption);
+    letter-spacing: var(--letter-spacing-label);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    padding: var(--space-4);
+    text-align: center;
+}

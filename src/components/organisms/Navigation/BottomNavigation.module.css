@@ -1,0 +1,80 @@
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+    width: 100%;
+    
+    /* Glass XL Effect */
+    -webkit-backdrop-filter: var(--glass-backdrop-blur-xl);
+    backdrop-filter: var(--glass-backdrop-blur-xl);
+    background-color: rgba(12, 16, 24, 0.75); /* Darker glass for nav */
+    
+    border-top: 1px solid var(--border-secondary);
+    z-index: var(--z-navigation);
+    
+    /* Safe Area */
+    padding-bottom: env(safe-area-inset-bottom);
+    height: calc(80px + env(safe-area-inset-bottom));
+}
+
+.button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: var(--space-1);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: var(--font-primary);
+    padding: var(--space-2) 0;
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+.label {
+    font-size: var(--font-badge-text);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Active State */
+.active {
+    color: var(--text-primary);
+    transform: translateY(-4px);
+}
+
+.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 3px;
+    background-color: var(--brand-primary);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-glow-purple);
+}
+
+/* Desktop Hover */
+@media (hover: hover) and (pointer: fine) {
+    .button:not(.active):not(:disabled):hover {
+        color: var(--text-secondary);
+        transform: translateY(-2px);
+    }
+}

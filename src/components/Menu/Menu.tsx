@@ -1,38 +1,46 @@
 import React from "react";
 import styles from "./Menu.module.css";
+import { svgIcons } from "./svg/IconsAll.tsx";
 
-import { svgIcons } from "./svg/IconsAll";
+const menuConfig = [
+    { name: "HOME", IconComponent: svgIcons.HOME },
+    { name: "FOTO", IconComponent: svgIcons.FOTO },
+    { name: "INFO", IconComponent: svgIcons.INFO },
+    { name: "LIST", IconComponent: svgIcons.LIST },
+    { name: "MUSIC", IconComponent: svgIcons.MUSIC },
+    { name: "PERSONE", IconComponent: svgIcons.PERSONE },
+];
 
-const Menu = ({ page, handlerPage }) => {
-    const allIcons = Object.entries(svgIcons).map(([name, IconComponent]) => {
-        return (
-            <MenuButton 
-                key={`menu_button_${name}`} 
-                name={name} 
-                IconComponent={IconComponent} 
-                page={page}
-                handlerPage={handlerPage}
-            />
-        );
-    });
-    
+interface MenuProps {
+    page: string;
+    handlerPage: (page: string) => void;
+}
+
+const Menu = ({ page, handlerPage }: MenuProps) => {
     return (
-        <div className={styles.menu}>{allIcons}</div>
+        <div className={styles.menuContainer}>
+            {menuConfig.map(({ name, IconComponent }) => (
+                <MenuButton key={name} name={name} IconComponent={IconComponent} page={page} handlerPage={handlerPage} />
+            ))}
+        </div>
     );
 };
 
-const MenuButton = ({ name, IconComponent, page, handlerPage }) => {
-    const [hover, setHover] = React.useState(false);
-    
+interface MenuButtonProps {
+    name: string;
+    IconComponent: React.ElementType;
+    page: string;
+    handlerPage: (page: string) => void;
+}
+
+const MenuButton = ({ name, IconComponent, page, handlerPage }: MenuButtonProps) => {
+    const isActive = page === name;
     return (
-        <div 
-            className={styles.menuButton}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            onClick={() => handlerPage(name)}
-        >   
-            <IconComponent className="menu-icon" color={hover || page === name ? "white" : "#A0A0A0"} hover={hover || page === name}/>
-            <div className={`${styles.menuButtonBackground} ${hover || page === name ? styles.menuButtonBackHover : ""}`}></div>
+        <div className={styles.menuButtonWrapper} onClick={() => handlerPage(name)}>
+            <div className={`${styles.icon} ${isActive ? styles.activeIcon : ''}`}>
+                <IconComponent />
+            </div>
+            {/* Selector might be added back later if designed */}
         </div>
     );
 };

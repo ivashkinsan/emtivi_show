@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import styles from "./TV.module.css";
 import Background from "../Background/Background.tsx";
 import Logo from "../Logo/Logo.tsx";
@@ -7,48 +7,43 @@ import SoundWaveAnimation from "../SoundWaveAnimation/SoundWaveAnimation.tsx";
 import LogogLabel from "../Logo/LogoLabel.tsx";
 import Persons from "../Persons/Persons.tsx"; // Import Persons component
 
-const PageContent = ({ page }) => {
+const PageContent = ({ page }: { page: string }) => {
     // A simple placeholder for page content
-    const pageStyle = {
+    const pageStyle: React.CSSProperties = {
         color: 'white',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '2rem',
         marginTop: '20px',
-        zIndex: 10 // Ensure it's above background elements
-    };
-
-    const defaultPageContentStyle = {
-        ...pageStyle,
-        fontSize: '2rem',
+        zIndex: 10, // Ensure it's above background elements
         textAlign: 'center',
     };
 
     switch (page) {
         case "HOME":
-            return <div style={defaultPageContentStyle}>Добро пожаловать на канал EMTIVI!</div>;
+            return <div style={pageStyle}>Добро пожаловать на канал EMTIVI!</div>;
         case "FOTO":
-            return <div style={defaultPageContentStyle}>Фотогалерея скоро будет здесь.</div>;
+            return <div style={pageStyle}>Фотогалерея скоро будет здесь.</div>;
         case "INFO":
-            return <div style={defaultPageContentStyle}>Информация о проекте.</div>;
+            return <div style={pageStyle}>Информация о проекте.</div>;
         case "LIST":
-            return <div style={defaultPageContentStyle}>Список передач.</div>;
+            return <div style={pageStyle}>Список передач.</div>;
         case "MUSIC":
-            return <div style={defaultPageContentStyle}>Музыкальный канал.</div>;
+            return <div style={pageStyle}>Музыкальный канал.</div>;
         case "PERSONE":
             return <Persons />; // Render Persons component
         case "PHONE":
-            return <div style={defaultPageContentStyle}>Свяжитесь с нами!</div>;
+            return <div style={pageStyle}>Свяжитесь с нами!</div>;
         case "VIDEO":
-            return <div style={defaultPageContentStyle}>Видеоархив.</div>;
+            return <div style={pageStyle}>Видеоархив.</div>;
         default:
-            return <div style={defaultPageContentStyle}>Страница не найдена.</div>;
+            return <div style={pageStyle}>Страница не найдена.</div>;
     }
 };
 
 const TV =() =>{
     const [page, setPage] = React.useState("HOME");
 
-    const handlerPage = (inputPage)=>{
+    const handlerPage = (inputPage: string)=>{
         if (page === inputPage) return; // Prevent re-render if already on the same page
         setPage(inputPage);
     }

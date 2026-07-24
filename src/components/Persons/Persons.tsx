@@ -1,92 +1,80 @@
-import React from 'react';
+import type { CSSProperties } from "react";
+
+const containerStyle: CSSProperties = {
+    padding: '20px',
+    maxWidth: '800px',
+    margin: '0 auto',
+    color: '#fff',
+    fontFamily: 'Arial, sans-serif'
+};
+
+const headingStyle: CSSProperties = {
+    color: '#FFD700',
+    fontFamily: '"Montserrat", sans-serif',
+    fontSize: '2rem',
+    marginBottom: '20px',
+    textAlign: 'center'
+};
+
+const textStyle: CSSProperties = {
+    color: '#ccc',
+    fontFamily: '"Open Sans", sans-serif',
+    fontSize: '1rem',
+    maxWidth: '600px',
+    textAlign: 'center',
+    lineHeight: '1.6',
+    margin: '0 auto',
+    padding: '10px'
+};
+
+const subheadingStyle: CSSProperties = {
+    color: '#FFD700',
+    fontFamily: '"Montserrat", sans-serif',
+    fontSize: '1.5rem',
+    marginTop: '40px',
+    marginBottom: '10px',
+    textAlign: 'left',
+    paddingLeft: '20px'
+};
+
+const contactStyle: CSSProperties = {
+    color: '#FFD700',
+    fontFamily: '"Open Sans", sans-serif',
+    fontSize: '1.2rem',
+    textAlign: 'center',
+    marginTop: '30px'
+};
 
 const Persons = () => {
-    const textStyle = {
-        color: 'white',
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1rem',
-        maxWidth: '800px',
-        textAlign: 'left',
-        lineHeight: '1.5',
-        margin: '20px auto',
-        padding: '0 20px',
-    };
-
-    const headingStyle = {
-        color: 'white',
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1.5rem',
-        marginBottom: '10px',
-        textAlign: 'center',
-    };
-
-    const subheadingStyle = {
-        color: 'white',
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1.2rem',
-        marginTop: '20px',
-        marginBottom: '10px',
-        textAlign: 'left',
-        paddingLeft: '20px',
-    };
-
-    const listStyle = {
-        color: 'white',
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1rem',
-        listStyleType: 'disc',
-        paddingLeft: '40px',
-    };
-
-    const contactStyle = {
-        color: 'white',
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1rem',
-        textAlign: 'center',
-        marginTop: '30px',
-    };
-
     return (
-        <div style={{ maxHeight: 'calc(100vh - 200px)', overflowY: 'auto' }}> {/* Added for scrollability */}
+        <div style={containerStyle}>
             <h2 style={headingStyle}>EMTIVI — это тот самый хедлайнер, который заряжает танцпол с первых нот!</h2>
             <p style={textStyle}>
-                Наш репертуар — сокровищница хитов, знакомых всем, а наша энергия — безгранична.
+                Ребята из легендарных групп Just Like Heaven и StrawberryFields, теперь с ещё большим драйвом!
             </p>
             <p style={textStyle}>
-                Любимчики публики и профессионалы своего дела. Мы играем так, чтобы ваш праздник стал незабываемым. Доверьте нам атмосферу — мы сделаем её идеальной!
+                Сочетание опыта и бешеной энергетики не оставляет равнодушным!
             </p>
             <p style={textStyle}>
-                Ребята из легендарных групп Just Like Heaven и StravberryFields, теперь с ещё большим драйвом! Опыт на сцене — с 2010 года.
+                Опыт на сцене — с 2010 года.
             </p>
 
             <h3 style={subheadingStyle}>Знакомьтесь, команда мечты:</h3>
-            <ul style={listStyle}>
-                <li>
-                    <strong>🎤 Три уникальные вокалистки:</strong> Дарья Темникова, Marissa Moore и Ульяна Уладова. Каждая из них — яркая сольная артистка с собственной неповторимой программой и харизмой. Вместе с EMTIVI они создают по-настоящему звёздное шоу, где есть место и мощному року, и зажигательному фанку, и лиричным балладам.
-                </li>
-                <li>
-                    <strong>🎷 Сакс-гуру Филипп Арутюнов:</strong> саксофонист-виртуоз, чьи соло дышат джазом, фанком и рок-н-роллом. Он не просто играет музыку — он говорит саксофоном, и каждый его «монолог» завораживает.
-                </li>
-                <li>
-                    <strong>🎸 Максим Катрук:</strong> гитарист-виртуоз. Обладатель безупречного слуха и филигранной техники. Каждая его нота — точное попадание в сердце, а соло — это искренняя история, рассказанная струнами.
-                </li>
-                <li>
-                    <strong>🎹 Вдохновитель за клавишами Александр Ивашкин:</strong> Лидер группы, который превращает любую идею в чистый звук.
-                </li>
-                <li>
-                    <strong>🥁 Драм-мастер Дмитрий Стульнев:</strong> Сердцебиение группы! Лучший барабанщик региона, который создает тот самый неуловимый грув и заставляет всех двигаться в такт музыке.
-                </li>
+            <ul>
+                <li>Дарья Темникова — Вокал</li>
+                <li>Филипп Арутюнов — Саксофон</li>
+                <li>Максим Катрук — Гитара</li>
+                <li>Александр Ивашкин — Клавиши</li>
+                <li>Дмитрий Стульнев — Барабаны</li>
             </ul>
 
             <h3 style={subheadingStyle}>💥 Хотите музыкальное шоу помасштабнее?</h3>
             <p style={textStyle}>
-                Закажите «полный состав» с медной секцией (саксофон, труба, тромбон)! 8 профессионалов на вашем празднике — это абсолютный вау-эффект.
+                Для особенных мероприятий мы расширяем состав до 8 человек, добавляя трубу и тромбон. Усиленная медная секция — это абсолютный вау-эффект, который вы не забудете!
             </p>
 
             <p style={contactStyle}>
-                📲 Чтобы мы спели и сыграли для вас:<br/>
-                Звоните Александру: +7 905 179 75 60<br/>
-                (Обсудим программу, цены и зарезервируем лучшую дату!)
+                <a href="tel:+79051797560" style={{color: '#FFD700'}}>+7 (905) 179-75-60</a> — Александр (звоните, чтобы заказать выступление!)
             </p>
         </div>
     );

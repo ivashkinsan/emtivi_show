@@ -1,0 +1,27 @@
+.container {
+    padding: var(--space-6);
+}
+
+.section {
+    margin-bottom: var(--space-12);
+}
+
+.sectionTitle {
+    font-family: var(--font-headings);
+    font-size: var(--font-heading-l);
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.videoGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .videoGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

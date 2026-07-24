@@ -1,0 +1,31 @@
+import React from 'react';
+import styles from './SocialLinks.module.css';
+import Button from '../../../components/atoms/Button/Button';
+
+// Reusing icons from MusicianCard, ideally these would be in a shared icon library
+const InstagramIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+);
+  
+const VkIcon = () => (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.162 18.994c.609 0 .92-.284.92-.917V15.23c0-.58.21-.854.837-.962h.43c.52 0 .764-.24.764-.72v-2.45c0-.422-.182-.633-.547-.633h-1.42c-.592 0-.888-.24-.888-.72V7.48c0-.42.21-.63.633-.63h2.134c.48 0 .692-.21.692-.633V4.083c0-.421-.21-.633-.633-.633h-2.91c-1.443 0-2.315.692-2.315 2.07v3.21c0 .48-.21.72-.693.72H9.37c-.48 0-.692.21-.692.633v2.51c0 .42.21.63.692.63h1.36c.547 0 .82.24.82.72v3.02c0 1.05-.346 1.48-1.74 1.48A10.15 10.15 0 0 1 3 13.628c-1.358-2.133-1.68-4.32-1.68-5.77C1.32 5.12 2.893 3 6.137 3c1.74 0 2.91.692 3.52 1.74a.82.82 0 0 0 .75.38h.345c.42 0 .633-.153.75-.44C12.137 3.63 13.248 3 14.93 3c3.09 0 4.742 2.05 4.742 4.685 0 1.9-.347 3.82-1.74 4.81-.347.24-.347.45 0 .66 1.422.9 2.133 2.37 2.133 4.02 0 2.22-1.56 3.84-4.685 3.84h-2.22z"/>
+      </svg>
+);
+
+export const SocialLinks: React.FC = () => {
+    return (
+        <div className={styles.socials}>
+            <Button href="https://instagram.com/emtivi_band" target="_blank" rel="noopener noreferrer" variant="glass" size="lg" aria-label="Instagram">
+                <InstagramIcon />
+            </Button>
+            <Button href="http://www.emtivi.ru/" target="_blank" rel="noopener noreferrer" variant="glass" size="lg" aria-label="VK">
+                <VkIcon />
+            </Button>
+        </div>
+    );
+};

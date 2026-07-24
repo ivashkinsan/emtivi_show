@@ -1,0 +1,44 @@
+.card {
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
+    margin-bottom: var(--space-4);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.playButton {
+    color: white;
+    opacity: 0.7;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.card:hover .playButton {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+}
+
+.duration {
+    font-family: var(--font-accent);
+    color: var(--text-muted);
+}

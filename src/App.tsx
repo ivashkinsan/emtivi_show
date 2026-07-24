@@ -1,16 +1,9 @@
-import React from "react";
+import { App } from './app/App';
 
-import HomePage from './pages/HomePage/HomePage.tsx';
+// This is the main entry point App component.
+// It just renders the core App from the /app directory.
+const RootApp = () => {
+    return <App />;
+};
 
-// import Menu from './menu/Menu.tsx';
-
-function App() {
-  return (
-    <div className="app">
-      <HomePage /> 
-      
-    </div>
-  );
-}
-
-export default App;
+export default RootApp;
