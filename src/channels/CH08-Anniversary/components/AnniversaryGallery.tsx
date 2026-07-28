@@ -1,7 +1,8 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from '../Background.module.css';
 import { HeartParticles } from './HeartParticles';
+import { AnniversaryCounter } from './AnniversaryCounter';
 
 const images = [
     'DSCN1755.JPG', 'DSCN2790.JPG', 'DSC_0028.JPG', 'DSC_0069.JPG', 'DSC_0661.JPG', 
@@ -37,6 +38,9 @@ const heartShape = (t: number) => {
 export const AnniversaryGallery = () => {
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [showParticles, setShowParticles] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const currentIndex = useRef(0);
+    const timeoutRef = useRef<NodeJS.Timeout>();
 
     // Генерация позиций один раз при монтировании
     const collageItems = useMemo(() => images.map((img, i) => {
@@ -50,31 +54,38 @@ export const AnniversaryGallery = () => {
         };
     }), []);
 
+    const loop = (index: number, show: boolean) => {
+        if (show) {
+            setSelectedId(null);
+            setShowParticles(false);
+            timeoutRef.current = setTimeout(() => loop(currentIndex.current, false), 1600); 
+        } else {
+            const nextIndex = index % images.length;
+            setSelectedId(images[nextIndex]);
+            setShowParticles(true);
+            currentIndex.current = (nextIndex + 1) % images.length;
+            setProgress(nextIndex / images.length);
+            timeoutRef.current = setTimeout(() => loop(currentIndex.current, true), 5000);
+        }
+    };
+
     useEffect(() => {
-        let i = 0;
-        let timeout: NodeJS.Timeout;
-
-        const loop = (show: boolean) => {
-            if (show) {
-                // Закрываем фото
-                setSelectedId(null);
-                setShowParticles(false);
-                timeout = setTimeout(() => loop(false), 100); // 0.1с пауза
-            } else {
-                // Открываем следующее фото
-                setSelectedId(images[i]);
-                setShowParticles(true);
-                i = (i + 1) % images.length;
-                timeout = setTimeout(() => loop(true), 5000); // 5с показ
-            }
-        };
-
-        loop(false); // Начинаем с открытия
-        return () => clearTimeout(timeout);
+        loop(currentIndex.current, false);
+        return () => clearTimeout(timeoutRef.current);
     }, []);
+
+    const handleSkip = (newIndex: number) => {
+        clearTimeout(timeoutRef.current);
+        currentIndex.current = newIndex;
+        loop(currentIndex.current, false);
+    };
 
     return (
         <div style={{ width: '100vw', height: '100vh', background: '#000', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: '35%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', fontSize: '3rem', fontWeight: 'bold', textTransform: 'uppercase', zIndex: 5, textShadow: '0 0 10px rgba(0,0,0,0.8)', pointerEvents: 'none' }}>
+                20 ЛЕТ ВМЕСТЕ
+            </div>
+            <AnniversaryCounter totalImages={images.length} progress={progress} onSkip={handleSkip} />
             <div className={styles.background}>
                 <AnimatePresence>
                     {selectedId && (
@@ -105,7 +116,8 @@ export const AnniversaryGallery = () => {
                             rotate: item.rotate,
                             width: '90px',
                             height: '90px',
-                            zIndex: selectedId === item.id ? 20 : 1
+                            zIndex: selectedId === item.id ? 20 : 1,
+                            opacity: selectedId === item.id ? 0 : 1
                         }}
                     >
                         <img 
