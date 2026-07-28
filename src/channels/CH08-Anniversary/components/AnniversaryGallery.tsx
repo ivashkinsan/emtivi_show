@@ -92,9 +92,6 @@ export const AnniversaryGallery = () => {
   const [bgImage, setBgImage] = useState<string | null>(null);
   const masterProgress = useMotionValue(0);
 
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const collageItems = useMemo(
     () =>
       images.map((img, i) => {
@@ -145,17 +142,6 @@ export const AnniversaryGallery = () => {
 
   const handleSkip = (progress: number) => {
     masterProgress.set(progress);
-  };
-
-  const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
   };
 
   const selectedItem = selectedId
@@ -284,43 +270,6 @@ export const AnniversaryGallery = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <audio
-        ref={audioRef}
-        src="/Pesnya.mp3"
-        loop
-        preload="auto"
-        style={{ display: "none" }}
-      />
-      <motion.button
-        onClick={togglePlayPause}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          zIndex: 100,
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
-          borderRadius: "50%",
-          width: "60px",
-          height: "60px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          cursor: "pointer",
-          color: "white",
-          fontSize: "1.5rem",
-          boxShadow: "0 0 10px rgba(0,0,0,0.5)",
-          padding: 0,
-        }}
-      >
-        {isPlaying ? "⏸" : "▶"}
-      </motion.button>
     </div>
   );
 };
