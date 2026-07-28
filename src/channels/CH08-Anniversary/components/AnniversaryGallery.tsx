@@ -6,7 +6,7 @@ import { AnniversaryCounter } from './AnniversaryCounter';
 
 const images = [
     'DSCN1755.JPG', 'DSCN2790.JPG', 'DSC_0028.JPG', 'DSC_0069.JPG', 'DSC_0661.JPG', 
-    'DSC_0834.jpg', 'IMG_0042.jpg', 'IMG_0159.jpg', 'IMG_0160.jpg', 'IMG_1282.jpg', 
+    'DSC_0834.jpg', 'IMG_0042.jpg', 'IMG_0159.jpg', 'IMG_0160.jpg', 
     'IMG_1285.jpg', 'IMG_1668.jpg', 'IMG_20171231_184831_1.jpg', 'IMG_20180121_125729.jpg', 
     'IMG_20180121_133058.jpg', 'IMG_20180324_213218.jpg', 'IMG_20180530_173050.jpg', 
     'IMG_20180530_173202.jpg', 'IMG_20180710_195155.jpg', 'IMG_20180725_174929.jpg', 
@@ -17,15 +17,13 @@ const images = [
     'IMG_20190801_180051.jpg', 'IMG_20190804_091154.jpg', 'IMG_20190825_162212.jpg', 
     'IMG_20190902_085134.jpg', 'IMG_20190929_130032.jpg', 'IMG_20191230_225350.jpg', 
     'IMG_20191231_183941.jpg', 'IMG_20200216_153855.jpg', 'IMG_20200420_202102.jpg', 
-    'IMG_20200601_154518.jpg', 'IMG_20200720_195424.jpg', 'IMG_20200720_195429.jpg', 
+    'IMG_20200601_154518.jpg', 'IMG_20200720_195424.jpg', 
     'IMG_20200731_183623.jpg', 'IMG_20210425_114225.jpg', 'IMG_20210729_164350.jpg', 
-    'IMG_20210729_172011.jpg', 'IMG_20210730_200338.jpg', 'IMG_20210804_192758.jpg', 
+    'IMG_20210730_200338.jpg', 'IMG_20210804_192758.jpg', 
     'IMG_3738.jpg', 'IMG_5783.jpg', 'IMG_6862.jpg', 'IMG_6942.jpg', 'IMG_7144.jpg', 
-    'IMG_7944.jpg', 'IMG_9059.jpg', 'IMG_9077.jpg', 'IMG_9109.jpg', 'IMG_9113.jpg', 
+    'IMG_7944.jpg', 'IMG_9059.jpg', 'IMG_9077.jpg', 'IMG_9113.jpg', 
     'IMG_9132.jpg', 'IMG_9158.jpg', 'IMG_9416.jpg', 'IMG_9452.jpg', 'IMG_9469.jpg', 
-    'IMG_9471.jpg', 'P1000194.JPG', 'P1000226.JPG', 'P1000237.JPG', 'P_20170611_142654_BF.jpg', 
-    'Фотография 10.11.13 в 20.16.jpg', 'Фотография 10.11.14 в 19.33 #4.jpg', 
-    'Фотография 24.11.13 в 19.28 #4.jpg'
+    'P1000194.JPG', 'P1000237.JPG', 'P_20170611_142654_BF.jpg'
 ];
 
 // Математическая функция сердца
@@ -152,7 +150,7 @@ export const AnniversaryGallery = () => {
                         <motion.img
                             src={`foto_collage/${encodeURIComponent(selectedId)}`}
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.9 }}
+                            animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 1.5, ease: "easeInOut" }}
                             style={{

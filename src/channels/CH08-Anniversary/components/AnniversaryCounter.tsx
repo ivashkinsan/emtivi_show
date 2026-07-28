@@ -1,33 +1,43 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
-const DigitBlock = ({ value, label, minWidth }: { value: number | string; label: string; minWidth: string }) => (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', minWidth: minWidth, margin: '0 5px' }}>
-        <span style={{ fontVariantNumeric: 'tabular-nums', fontSize: '2rem', fontWeight: '900', textAlign: 'left', width: '100%' }}>{String(value)}</span>
-        <span style={{ fontSize: '0.8rem', marginTop: '2px', opacity: 0.9, textTransform: 'uppercase' }}>{label}</span>
-    </div>
-);
+const DigitBlock = ({ value, label, minWidth }: { value: any; label: string; minWidth: string }) => {
+    const rounded = useTransform(value, (latest) => Math.round(latest));
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', minWidth: minWidth, margin: '0 5px' }}>
+            <motion.span style={{ fontVariantNumeric: 'tabular-nums', fontSize: '2rem', fontWeight: '900', textAlign: 'left', width: '100%' }}>
+                {rounded}
+            </motion.span>
+            <span style={{ fontSize: '0.8rem', marginTop: '2px', opacity: 0.9, textTransform: 'uppercase' }}>{label}</span>
+        </div>
+    );
+};
 
 export const AnniversaryCounter = ({ totalImages, progress, onSkip }: { totalImages: number, progress: number, onSkip: (index: number) => void }) => {
-    const [time, setTime] = useState({ years: 0, months: 0, days: 0, hours: 0, minutes: 0 });
+    const years = useMotionValue(0);
+    const months = useMotionValue(0);
+    const days = useMotionValue(0);
+    const hours = useMotionValue(0);
+    const minutes = useMotionValue(0);
 
     useEffect(() => {
         const targetYears = 20;
-        // Накопительный расчет на основе прогресса
-        const totalMinutes = progress * (targetYears * 365.25 * 24 * 60);
-        const totalHours = progress * (targetYears * 365.25 * 24);
-        const totalDays = progress * (targetYears * 365.25);
-        const totalMonths = progress * (targetYears * 12);
-        const totalYears = progress * targetYears;
-        
-        setTime({
-            years: Math.floor(totalYears),
-            months: Math.floor(totalMonths),
-            days: Math.floor(totalDays),
-            hours: Math.floor(totalHours),
-            minutes: Math.floor(totalMinutes),
+        const timePerImage = 6.6; // 1.6s (off) + 5s (on)
+        const animationDuration = totalImages * timePerImage;
+
+        const controls = animate(0, 1, {
+            duration: animationDuration,
+            onUpdate: (latest) => {
+                years.set(latest * targetYears);
+                months.set(latest * targetYears * 12);
+                days.set(latest * targetYears * 365.25);
+                hours.set(latest * targetYears * 365.25 * 24);
+                minutes.set(latest * targetYears * 365.25 * 24 * 60);
+            },
         });
-    }, [progress]);
+
+        return () => controls.stop();
+    }, [totalImages, years, months, days, hours, minutes]);
 
     const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -55,25 +65,28 @@ export const AnniversaryCounter = ({ totalImages, progress, onSkip }: { totalIma
                 zIndex: 50,
                 pointerEvents: 'auto',
                 textShadow: '0 0 10px rgba(0,0,0,0.8)',
-                background: 'rgba(0,0,0,0.5)',
+                background: 'rgba(0, 0, 0, 0.65)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
                 padding: '10px 20px',
-                borderRadius: '20px'
+                borderRadius: '20px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
             }}
         >
-            {/* Прогресс-бар с кликом */}
             <div 
                 onClick={handleProgressClick}
                 style={{ width: '1000px', height: '8px', background: '#333', borderRadius: '4px', marginBottom: '10px', overflow: 'hidden', cursor: 'pointer' }}
             >
+                {/* Прогресс-бар все еще обновляется от прокрутки для визуальной обратной связи */}
                 <div style={{ width: `${progress * 100}%`, height: '100%', background: '#ff69b4', transition: 'width 0.1s linear' }} />
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <DigitBlock value={time.years} label="ЛЕТ" minWidth="100px" />
-                <DigitBlock value={time.months} label="МЕС" minWidth="120px" />
-                <DigitBlock value={time.days} label="ДНЕЙ" minWidth="140px" />
-                <DigitBlock value={time.hours} label="ЧАС" minWidth="160px" />
-                <DigitBlock value={time.minutes} label="МИН" minWidth="180px" />
+                <DigitBlock value={years} label="ЛЕТ" minWidth="100px" />
+                <DigitBlock value={months} label="МЕС" minWidth="120px" />
+                <DigitBlock value={days} label="ДНЕЙ" minWidth="140px" />
+                <DigitBlock value={hours} label="ЧАС" minWidth="160px" />
+                <DigitBlock value={minutes} label="МИН" minWidth="180px" />
             </div>
         </motion.div>
     );
