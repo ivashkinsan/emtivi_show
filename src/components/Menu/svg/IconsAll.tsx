@@ -109,6 +109,12 @@ const PhoneIcon = ({ color = "currentColor" }) => (
   </svg>
 );
 
+const HeartIcon = ({ color = "currentColor" }) => (
+    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25 42.1875L22.6562 40.0781C14.4531 32.7344 9.0625 27.8125 9.0625 21.875C9.0625 16.9531 12.9688 13.0469 17.8906 13.0469C20.6562 13.0469 23.3125 14.3281 25 16.4375C26.6875 14.3281 29.3438 13.0469 32.1094 13.0469C37.0312 13.0469 40.9375 16.9531 40.9375 21.875C40.9375 27.8125 35.5469 32.7344 27.3438 40.0781L25 42.1875Z" fill={color}/>
+    </svg>
+);
+
 const svgIcons = {
     "HOME": HomeIcon,
     "INFO": InfoIcon,
@@ -118,6 +124,7 @@ const svgIcons = {
     "PERSONE": PersonIcon,
     "PHONE": PhoneIcon,
     "VIDEO": FotoIcon,
+    "HEART": HeartIcon,
 }
 
 export { svgIcons };
