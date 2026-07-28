@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence, useMotionValue, animate } from 'framer-motion';
 import styles from '../Background.module.css';
 import { HeartParticles } from './HeartParticles';
 import { AnniversaryCounter } from './AnniversaryCounter';
@@ -34,46 +34,43 @@ const heartShape = (t: number) => {
 
 export const AnniversaryGallery = () => {
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const [showParticles, setShowParticles] = useState(false);
-    const [progress, setProgress] = useState(0);
-    const currentIndex = useRef(0);
-    const timeoutRef = useRef<NodeJS.Timeout>();
+    const masterProgress = useMotionValue(0);
 
     const collageItems = useMemo(() => images.map((img, i) => {
         const t = (i / images.length) * 2 * Math.PI;
         const { x, y } = heartShape(t);
-        return {
-            id: img,
-            x: x * 30 + 500 - 45,
-            y: y * 30 + 225 - 45,
-            rotate: Math.random() * 20 - 10,
-        };
+        return { id: img, x: x * 30 + 500 - 45, y: y * 30 + 225 - 45, rotate: Math.random() * 20 - 10 };
     }), []);
 
-    const loop = (index: number, show: boolean) => {
-        if (show) {
-            setSelectedId(null);
-            setShowParticles(false);
-            timeoutRef.current = setTimeout(() => loop(currentIndex.current, false), 1600);
-        } else {
-            const nextIndex = index % images.length;
-            setSelectedId(images[nextIndex]);
-            setShowParticles(true);
-            currentIndex.current = (nextIndex + 1) % images.length;
-            setProgress(nextIndex / images.length);
-            timeoutRef.current = setTimeout(() => loop(currentIndex.current, true), 5000);
-        }
-    };
-
     useEffect(() => {
-        loop(currentIndex.current, false);
-        return () => clearTimeout(timeoutRef.current);
-    }, []);
+        const totalDuration = 540; // 9 minutes for the whole show
+        const timePerImage = totalDuration / images.length;
+        const onTime = timePerImage * 0.75; // 75% of the time the image is visible
 
-    const handleSkip = (newIndex: number) => {
-        clearTimeout(timeoutRef.current);
-        currentIndex.current = newIndex;
-        loop(currentIndex.current, false);
+        const controls = animate(masterProgress, 1, {
+            duration: totalDuration,
+            ease: 'linear',
+        });
+
+        const unsubscribe = masterProgress.on('change', (latest) => {
+            const currentImageIndex = Math.floor(latest * images.length);
+            const timeIntoCurrentImage = (latest * totalDuration) % timePerImage;
+            
+            if (timeIntoCurrentImage < onTime) {
+                setSelectedId(images[currentImageIndex]);
+            } else {
+                setSelectedId(null);
+            }
+        });
+
+        return () => {
+            controls.stop();
+            unsubscribe();
+        };
+    }, [masterProgress]);
+
+    const handleSkip = (progress: number) => {
+        masterProgress.set(progress);
     };
 
     const selectedItem = selectedId ? collageItems.find(item => item.id === selectedId) : null;
@@ -83,7 +80,7 @@ export const AnniversaryGallery = () => {
             <div style={{ position: 'absolute', top: '35%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', fontSize: '3rem', fontWeight: 'bold', textTransform: 'uppercase', zIndex: 5, textShadow: '0 0 10px rgba(0,0,0,0.8)', pointerEvents: 'none' }}>
                 20 ЛЕТ ВМЕСТЕ
             </div>
-            <AnniversaryCounter totalImages={images.length} progress={progress} onSkip={handleSkip} />
+            <AnniversaryCounter masterProgress={masterProgress} onSkip={handleSkip} />
             
             <div className={styles.background}>
                 <AnimatePresence>
@@ -94,7 +91,7 @@ export const AnniversaryGallery = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 1.5, delay: 1.5 }}
+                            transition={{ duration: 0.5 }}
                             className={styles.bgImage}
                             style={{ position: 'absolute' }}
                         />
@@ -107,7 +104,6 @@ export const AnniversaryGallery = () => {
                     <motion.div
                         key={item.id}
                         layoutId={item.id}
-                        onClick={() => setSelectedId(item.id)}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                         style={{
                             position: 'absolute',
@@ -116,7 +112,6 @@ export const AnniversaryGallery = () => {
                             rotate: item.rotate,
                             width: '90px',
                             height: '90px',
-                            cursor: 'pointer',
                         }}
                     >
                         <img
@@ -131,6 +126,7 @@ export const AnniversaryGallery = () => {
                 {selectedItem && (
                     <motion.div
                         layoutId={selectedItem.id}
+                        transition={{ type: 'spring', stiffness: 100, damping: 50 }}
                         style={{
                             position: 'fixed',
                             top: 0,
@@ -142,12 +138,13 @@ export const AnniversaryGallery = () => {
                             alignItems: 'center',
                             zIndex: 30,
                         }}
-                        onClick={() => setSelectedId(null)}
                     >
-                        {showParticles && <HeartParticles />}
+                        {/* Removed the background blur div */}
                         <motion.img
                             src={`foto_collage/${encodeURIComponent(selectedItem.id)}`}
                             style={{
+                                position: 'relative',
+                                zIndex: 31,
                                 maxWidth: '70vw',
                                 maxHeight: '70vh',
                                 objectFit: 'contain',
@@ -157,7 +154,7 @@ export const AnniversaryGallery = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 1.5, ease: 'easeInOut' }}
+                            transition={{ duration: 2.0, ease: "easeInOut" }}
                         />
                     </motion.div>
                 )}

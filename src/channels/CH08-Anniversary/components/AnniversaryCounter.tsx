@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, useTransform, MotionValue } from 'framer-motion';
 
-const DigitBlock = ({ value, label, minWidth }: { value: any; label: string; minWidth: string }) => {
+const DigitBlock = ({ value, label, minWidth }: { value: MotionValue<number>; label: string; minWidth: string }) => {
     const rounded = useTransform(value, (latest) => Math.round(latest));
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', minWidth: minWidth, margin: '0 5px' }}>
@@ -13,38 +12,20 @@ const DigitBlock = ({ value, label, minWidth }: { value: any; label: string; min
     );
 };
 
-export const AnniversaryCounter = ({ totalImages, progress, onSkip }: { totalImages: number, progress: number, onSkip: (index: number) => void }) => {
-    const years = useMotionValue(0);
-    const months = useMotionValue(0);
-    const days = useMotionValue(0);
-    const hours = useMotionValue(0);
-    const minutes = useMotionValue(0);
-
-    useEffect(() => {
-        const targetYears = 20;
-        const timePerImage = 6.6; // 1.6s (off) + 5s (on)
-        const animationDuration = totalImages * timePerImage;
-
-        const controls = animate(0, 1, {
-            duration: animationDuration,
-            onUpdate: (latest) => {
-                years.set(latest * targetYears);
-                months.set(latest * targetYears * 12);
-                days.set(latest * targetYears * 365.25);
-                hours.set(latest * targetYears * 365.25 * 24);
-                minutes.set(latest * targetYears * 365.25 * 24 * 60);
-            },
-        });
-
-        return () => controls.stop();
-    }, [totalImages, years, months, days, hours, minutes]);
+export const AnniversaryCounter = ({ masterProgress, onSkip }: { masterProgress: MotionValue<number>, onSkip: (progress: number) => void }) => {
+    const targetYears = 20;
+    const years = useTransform(masterProgress, p => p * targetYears);
+    const months = useTransform(masterProgress, p => p * targetYears * 12);
+    const days = useTransform(masterProgress, p => p * targetYears * 365.25);
+    const hours = useTransform(masterProgress, p => p * targetYears * 365.25 * 24);
+    const minutes = useTransform(masterProgress, p => p * targetYears * 365.25 * 24 * 60);
+    const progressBarWidth = useTransform(masterProgress, p => `${p * 100}%`);
 
     const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const percentage = Math.max(0, Math.min(1, x / rect.width));
-        const newIndex = Math.floor(percentage * totalImages);
-        onSkip(newIndex);
+        onSkip(percentage);
     };
 
     return (
@@ -77,8 +58,7 @@ export const AnniversaryCounter = ({ totalImages, progress, onSkip }: { totalIma
                 onClick={handleProgressClick}
                 style={{ width: '1000px', height: '8px', background: '#333', borderRadius: '4px', marginBottom: '10px', overflow: 'hidden', cursor: 'pointer' }}
             >
-                {/* Прогресс-бар все еще обновляется от прокрутки для визуальной обратной связи */}
-                <div style={{ width: `${progress * 100}%`, height: '100%', background: '#ff69b4', transition: 'width 0.1s linear' }} />
+                <motion.div style={{ width: progressBarWidth, height: '100%', background: '#ff69b4' }} />
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
