@@ -110,7 +110,7 @@ export const AnniversaryGallery = () => {
                     >
                         <img 
                             src={`foto_collage/${encodeURIComponent(item.id)}`} 
-                            style={{ width: '100%', height: '100%', objectFit: 'cover', border: '2px solid white', opacity: 0.6 }} 
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', border: '2px solid white', opacity: 0.6, filter: 'sepia(0.3) contrast(1.1) brightness(1.1)' }} 
                         />
                     </motion.div>
                 ))}
@@ -147,7 +147,8 @@ export const AnniversaryGallery = () => {
                                 maxWidth: '70vw',
                                 maxHeight: '70vh',
                                 objectFit: 'contain',
-                                border: '10px solid white'
+                                border: '10px solid white',
+                                filter: 'sepia(0.3) contrast(1.1) brightness(1.1)'
                             }}
                         />
                     </motion.div>
