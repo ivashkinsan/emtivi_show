@@ -22,7 +22,6 @@ const ShowsChannel = lazyWithDelay(() => import('../channels/CH04-Shows/index'))
 const MediaChannel = lazyWithDelay(() => import('../channels/CH05-Media/index')) as FC;
 const ContactChannel = lazyWithDelay(() => import('../channels/CH06-Contact/index')) as FC;
 const Test3DChannel = lazyWithDelay(() => import('../channels/CH07-Test3D/index')) as FC;
-const AnniversaryChannel = lazyWithDelay(() => import('../channels/CH08-Anniversary/index')) as FC;
 
 const channelMap: Record<string, React.FC<{}>> = {
     'CH01': HomeChannel,
@@ -32,7 +31,6 @@ const channelMap: Record<string, React.FC<{}>> = {
     'CH05': MediaChannel,
     'CH06': ContactChannel,
     'CH07': Test3DChannel,
-    'CH08': AnniversaryChannel,
 };
 
 const channelColorMap: Record<string, 'purple' | 'gold' | 'blue' | 'red' | 'white'> = {
@@ -42,7 +40,6 @@ const channelColorMap: Record<string, 'purple' | 'gold' | 'blue' | 'red' | 'whit
     'CH04': 'red',
     'CH05': 'blue',
     'CH06': 'gold',
-    'CH08': 'white',
 };
 
 const ChannelComponent: React.FC<{ channelId: string }> = ({ channelId }) => {
