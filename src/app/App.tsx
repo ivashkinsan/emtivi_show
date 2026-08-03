@@ -3,8 +3,7 @@ import styles from './App.module.css';
 import { TVShell } from '../components/TV/TVShell/index';
 import { BottomNavigation } from '../components/organisms/Navigation/index';
 import { useChannelTransition } from '../hooks/useChannelTransition';
-import { usePageLoading } from '../hooks/usePageLoading';
-import Loader from '../components/atoms/Loader/Loader';
+import { ExperimentalLogoLoader } from '../components/atoms/Loader/ExperimentalLogoLoader';
 import TransitionLoader from '../components/atoms/Loader/TransitionLoader';
 import { Providers } from './providers/index';
 import { ChannelHeader } from '../components/molecules/ChannelHeader';
@@ -54,16 +53,12 @@ const ChannelComponent: React.FC<{ channelId: string }> = ({ channelId }) => {
 const AppContent: FC = () => {
     const { channelToRender, shouldRender } = useChannelTransition();
     const [isLoaded, setIsLoaded] = useState(false);
-    const [isShrinking, setIsShrinking] = useState(false);
 
     useEffect(() => {
         // 3 секунды лоадера
         const timer = setTimeout(() => {
-            setIsShrinking(true); // Запуск схлопывания лоадера
-            setTimeout(() => {
-                setIsLoaded(true); // Запуск разворачивания приложения
-            }, 500); // время анимации схлопывания лоадера
-        }, 3000);
+            setIsLoaded(true); // Запуск разворачивания приложения
+        }, 3500); // 3с + время анимации
         return () => clearTimeout(timer);
     }, []);
 
@@ -73,30 +68,28 @@ const AppContent: FC = () => {
         <>
             {/* Начальный лоадер */}
             {!isLoaded && (
-                <div className={`${styles.loadingWrapper} ${isShrinking ? styles.shrinking : ''}`}>
-                    <Loader variant="bars" size="lg" />
-                </div>
+                <ExperimentalLogoLoader />
             )}
             
             {/* Основное окно */}
             <div className={`${styles.contentWrapper} ${isLoaded ? styles.isLoaded : ''}`}>
-                <Suspense fallback={
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100%' }}>
-                        <TransitionLoader variant="bars" size="lg" />
-                    </div>
-                }>
-                    <TVShell ambientColor={ambientColor} channelId={channelToRender}>
-                        <ChannelHeader channelId={channelToRender.substring(0, 5)} />
-                        
-                        <div className={styles.channelContainer}>
+                <TVShell ambientColor={ambientColor} channelId={channelToRender}>
+                    <ChannelHeader channelId={channelToRender.substring(0, 5)} />
+                    
+                    <div className={styles.channelContainer}>
+                        <Suspense fallback={
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
+                                <TransitionLoader variant="bars" size="lg" />
+                            </div>
+                        }>
                             <div className={`${styles.channelContent} ${shouldRender ? styles.visible : ''}`}>
                                 <ChannelComponent channelId={channelToRender} />
                             </div>
-                        </div>
+                        </Suspense>
+                    </div>
 
-                        <BottomNavigation />
-                    </TVShell>
-                </Suspense>
+                    <BottomNavigation />
+                </TVShell>
             </div>
         </>
     );

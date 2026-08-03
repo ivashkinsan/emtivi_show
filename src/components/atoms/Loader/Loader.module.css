@@ -115,3 +115,39 @@
     0%, 60%, 100% { transform: initial; }
     30% { transform: translateY(-25px); }
 }
+
+.experimentalLoaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--color-bg-primary);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+    transform-origin: center;
+}
+
+.experimentalLoaderContainer.shrinking {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.experimentalLogo {
+    width: 400px;
+    height: auto;
+}
+
+.logoPath {
+    fill: #28263D; /* Цвет незалитой части (var(--color-bg-tertiary)) */
+    stroke: #8B5CF6; /* Цвет заливки */
+    stroke-width: 2px;
+    animation: fillPath 0.5s forwards;
+}
+
+@keyframes fillPath {
+    to { fill: #8B5CF6; }
+}
