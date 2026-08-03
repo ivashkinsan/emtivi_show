@@ -3,4 +3,19 @@
     flex-direction: column;
     gap: var(--space-14);
     padding: var(--space-6);
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.parallaxBackground {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: url('../../img/emtivi_background_1.jpeg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
