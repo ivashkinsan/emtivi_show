@@ -6,7 +6,6 @@ import {
   animate,
 } from "framer-motion";
 import styles from "../Background.module.css";
-import { HeartParticles } from "./HeartParticles";
 import { AnniversaryCounter } from "./AnniversaryCounter";
 
 const images = [
