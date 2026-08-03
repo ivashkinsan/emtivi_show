@@ -10,6 +10,7 @@ export const Hero = () => {
     threshold: 0.1,
     triggerOnce: true,
   });
+  
   const heroClassName = `${styles.hero} ${isVisible ? styles.visible : ""}`;
 
   return (

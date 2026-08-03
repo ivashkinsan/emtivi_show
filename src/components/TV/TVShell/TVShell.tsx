@@ -3,6 +3,7 @@ import styles from "./TVShell.module.css";
 import { AmbientBackground } from './AmbientBackground';
 import { NoiseLayer } from './NoiseLayer';
 import { ImageBackground } from './ImageBackground';
+import { useParallax } from "../../../hooks/useParallax";
 
 export interface TVShellProps {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ export const TVShell: React.FC<TVShellProps> = ({
   channelId,
 }) => {
   const shellClassName = [styles.shell, className].filter(Boolean).join(" ");
+  const bgOffset = useParallax(10);
 
   return (
     <div className={shellClassName}>
@@ -26,7 +28,13 @@ export const TVShell: React.FC<TVShellProps> = ({
       <div className={styles.frame}>
         <div className={styles.bezel}>
           <div className={styles.screen}>
-            <ImageBackground isActive={channelId === 'CH01'} />
+            {channelId === 'CH01' && (
+              <div 
+                className={styles.parallaxBackground}
+                style={{ transform: `translate(${bgOffset.x}px, ${bgOffset.y}px)` }}
+              />
+            )}
+            {channelId !== 'CH01' && <ImageBackground isActive={channelId === 'CH01'} />}
             {children}
           </div>
         </div>

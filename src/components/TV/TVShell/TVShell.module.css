@@ -17,10 +17,11 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: var(--color-bg-primary); /* Move solid background here */
+    background-color: var(--color-bg-primary); 
     overflow: hidden;
-    padding: 0; /* No padding on mobile */
+    padding: 0; 
     box-sizing: border-box;
+    position: relative;
 }
 
 /* Frame - visible on desktop, fullscreen on mobile */
@@ -29,34 +30,57 @@
     width: 100%;
     height: 100%;
     transition: all var(--duration-normal) var(--ease-out);
-    background-color: transparent; /* Changed */
+    background-color: transparent; 
 }
 
 /* Bezel - the TV's physical body */
 .bezel {
     width: 100%;
     height: 100%;
-    background: transparent; /* Changed */
+    background: transparent; 
     transition: all var(--duration-normal) var(--ease-out);
-    position: relative; /* Create stacking context for inset shadow */
+    position: relative; 
 }
 
 /* Screen - where content lives */
 .screen {
     position: relative;
-    z-index: 1; /* Lift screen above bezel's inset shadow */
+    z-index: 1; 
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Ограничивает параллакс */
 }
 
+.parallaxBackground {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: url('../../../img/emtivi_background_1.jpeg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0; 
+}
+
+.parallaxBackground::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Затемнение */
+    z-index: 1;
+}
 
 /* -------------------------------------------------------------------------- */
 /*                            Desktop Styles (LG+)                            */
 /* -------------------------------------------------------------------------- */
 @media (min-width: 1024px) {
-    .shell { /* Add desktop padding for shell */
+    .shell { 
         padding: 20px 40px;
     }
     .frame {
