@@ -21,3 +21,37 @@
     opacity: 1;
     transform: scale(1);
 }
+
+/* Animations for loading transition */
+
+.loadingWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--color-bg-primary);
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+    transform-origin: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.loadingWrapper.shrinking {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.contentWrapper {
+    transform-origin: center;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 2s ease-out, opacity 2s ease-out;
+}
+
+.contentWrapper.isLoaded {
+    transform: scale(1);
+    opacity: 1;
+}

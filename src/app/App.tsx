@@ -1,14 +1,17 @@
-import React, { Suspense, useMemo, lazy, FC } from 'react';
+import React, { Suspense, useMemo, lazy, FC, useState, useEffect } from 'react';
 import styles from './App.module.css';
 import { TVShell } from '../components/TV/TVShell/index';
 import { BottomNavigation } from '../components/organisms/Navigation/index';
 import { useChannelTransition } from '../hooks/useChannelTransition';
+import { usePageLoading } from '../hooks/usePageLoading';
 import Loader from '../components/atoms/Loader/Loader';
+import TransitionLoader from '../components/atoms/Loader/TransitionLoader';
 import { Providers } from './providers/index';
+import { ChannelHeader } from '../components/molecules/ChannelHeader';
 
 // Helper for lazy loading with minimum delay
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-const lazyWithDelay = (importFn: () => Promise<any>, ms: number = 2000) => {
+const lazyWithDelay = (importFn: () => Promise<any>, ms: number = 3000) => {
     return lazy(() => Promise.all([importFn(), delay(ms)]).then(([module]) => module));
 }
 
@@ -48,46 +51,57 @@ const ChannelComponent: React.FC<{ channelId: string }> = ({ channelId }) => {
     return <Component />;
 };
 
-import { ChannelHeader } from '../components/molecules/ChannelHeader';
-
-
-const AppContent: React.FC = () => {
+const AppContent: FC = () => {
     const { channelToRender, shouldRender } = useChannelTransition();
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [isShrinking, setIsShrinking] = useState(false);
+
+    useEffect(() => {
+        // 3 секунды лоадера
+        const timer = setTimeout(() => {
+            setIsShrinking(true); // Запуск схлопывания лоадера
+            setTimeout(() => {
+                setIsLoaded(true); // Запуск разворачивания приложения
+            }, 500); // время анимации схлопывания лоадера
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, []);
+
     const ambientColor = useMemo(() => channelColorMap[channelToRender] || 'purple', [channelToRender]);
 
-    if (channelToRender === 'CH08') {
-        return (
-            <Suspense fallback={
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#000' }}>
+    return (
+        <>
+            {/* Начальный лоадер */}
+            {!isLoaded && (
+                <div className={`${styles.loadingWrapper} ${isShrinking ? styles.shrinking : ''}`}>
                     <Loader variant="bars" size="lg" />
                 </div>
-            }>
-                <ChannelComponent channelId={channelToRender} />
-            </Suspense>
-        );
-    }
-
-    return (
-        <TVShell ambientColor={ambientColor} channelId={channelToRender}>
-            {/* Header and Nav are outside the animated/scrolling container */}
-            <ChannelHeader channelId={channelToRender.substring(0, 5)} />
+            )}
             
-            <div className={styles.channelContainer}>
+            {/* Основное окно */}
+            <div className={`${styles.contentWrapper} ${isLoaded ? styles.isLoaded : ''}`}>
                 <Suspense fallback={
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                        <Loader variant="bars" size="lg" />
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100%' }}>
+                        <TransitionLoader variant="bars" size="lg" />
                     </div>
                 }>
-                    <div className={`${styles.channelContent} ${shouldRender ? styles.visible : ''}`}>
-                        <ChannelComponent channelId={channelToRender} />
-                    </div>
+                    <TVShell ambientColor={ambientColor} channelId={channelToRender}>
+                        <ChannelHeader channelId={channelToRender.substring(0, 5)} />
+                        
+                        <div className={styles.channelContainer}>
+                            <div className={`${styles.channelContent} ${shouldRender ? styles.visible : ''}`}>
+                                <ChannelComponent channelId={channelToRender} />
+                            </div>
+                        </div>
+
+                        <BottomNavigation />
+                    </TVShell>
                 </Suspense>
             </div>
-
-            <BottomNavigation />
-        </TVShell>
+        </>
     );
 };
+
 
 export const App: React.FC = () => {
     return (
