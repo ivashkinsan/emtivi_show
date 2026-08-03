@@ -23,8 +23,12 @@ export const TVShell: React.FC<TVShellProps> = ({
 
   return (
     <div className={shellClassName}>
-      <AmbientBackground color={ambientColor} />
-      <NoiseLayer />
+      {channelId !== 'CH01' && (
+        <>
+          <AmbientBackground color={ambientColor} />
+          <NoiseLayer />
+        </>
+      )}
       <div className={styles.frame}>
         <div className={styles.bezel}>
           <div className={styles.screen}>
@@ -34,7 +38,7 @@ export const TVShell: React.FC<TVShellProps> = ({
                 style={{ transform: `translate(${bgOffset.x}px, ${bgOffset.y}px)` }}
               />
             )}
-            {channelId !== 'CH01' && <ImageBackground isActive={channelId === 'CH01'} />}
+            {channelId !== 'CH01' && <ImageBackground isActive={true} />}
             {children}
           </div>
         </div>
